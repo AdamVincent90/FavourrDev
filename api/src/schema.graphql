@@ -56,6 +56,7 @@ type Review {
   title: String
   description: String
   byUser: String
+  name: String
 }
 
 type Query {
@@ -83,9 +84,9 @@ type Query {
     )
   studentById(sid: Int!): [Student]
     @cypher(statement: "MATCH (s:Student) WHERE id(s) = $sid RETURN s")
-  getReviews(sid: Int): [Review]
+  getReviews(sid: Int!): [Review]
     @cypher(
-      statement: "MATCH (s:Student)-[:GETS]->(r:Review) WHERE id(s) = $sid RETURN  r"
+      statement: "MATCH (s:Student)-[:GETS]->(r:Review) WHERE id(s) = $sid RETURN r"
     )
 }
 
@@ -155,5 +156,15 @@ type Mutation {
     ): [Notification]
     @cypher(
       statement: "MATCH (s1:Student{email: $yourEmail}), (s2:Student{email: $theirEmail}), (f:Favourr), (n:Notification) WHERE id(n) = $nid AND id(f) = $fid MERGE (s2)-[:GETS]->(n1:Notification{userRequested: $yourEmail, status: $status})-[:FOR]->(f)<-[:REQUESTS]-(s1) DETACH DELETE n RETURN n1"
+      )
+    reviewStudent(
+    yourEmail: String
+    theirEmail: String
+    name: String
+    title: String
+    description: String
+    ): [Review]
+    @cypher(
+      statement: "MATCH (s1:Student{email: $yourEmail}), (s2:Student{email: $theirEmail}) MERGE (s1)-[:WRITES]->(r:Review{byUser: $yourEmail, name: $name, title: $title, description: $description})<-[:GETS]-(s2) RETURN r"
       )
 }

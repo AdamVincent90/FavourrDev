@@ -1,3 +1,11 @@
+<script>
+export let name;
+export let user;
+export let title;
+export let description;
+
+</script>
+
 <style>
 
   .left-side {background-color: #FFFCFC;}
@@ -18,12 +26,13 @@
         <div class="card-panel grey lighten-5 z-depth-1">
           <div class="row left-side">
             <div class="col s3 l2 center">
-              <img src="profile-user.png" alt="" class="responsive-img">
-              <p class="">Liked by user</p>
+              <a href="profile"><img src="https://api.adorable.io/avatars/40/{user}" alt="" class="responsive-img"></a>
+              <p class="">{name}</p>
             </div>
             <div class="col s9 l10">
+            <p>{title}</p>
               <span class="black-text">
-                Predefined reason for liking user, can instead use emotes or images instead here.
+               {description}
               </span>
             </div>
           </div>

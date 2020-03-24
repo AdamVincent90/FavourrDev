@@ -15,6 +15,7 @@
         byUser
         title
         description
+        name
       }
     }
   `;
@@ -65,7 +66,13 @@
     <Profile firstname={firstname} lastname={lastname} bio={bio} profession={profession} email={email} />
     {/each}
   {/await}
-  
+
   <div class="divider" />
-  <ProfileBanner />
+  {#await $student}
+  <Loader />
+  {:then result}
+  {#each result.data.getReviews as {name, byUser, title, description}}
+  <ProfileBanner name={name} user={byUser} title={title} description={description}/>
+  {/each}
+  {/await}
 </div>

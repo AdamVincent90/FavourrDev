@@ -1,6 +1,5 @@
-
-
 <script>
+export let message;
 import { onMount } from "svelte";
 
 
@@ -19,15 +18,13 @@ onMount(async() => {
         <i class="material-icons">chevron_left</i>
       </a>
     </li>
-    <li class="active">
-      <a href="#!">Profile</a>
-    </li>
+  {#if message}
+  {#each message.studentsLinked as {email, _id}}
     <li class="waves-effect">
-      <a href="#!">Profile</a>
+      <a href="profile/{_id}"><img src="https://api.adorable.io/avatars/40/{email}" alt="Profile of user"></a>
     </li>
-    <li class="waves-effect">
-      <a href="#!">Profile</a>
-    </li>
+    {/each}
+    {/if}
     <li class="waves-effect">
       <a href="#!">
         <i class="material-icons">chevron_right</i>
