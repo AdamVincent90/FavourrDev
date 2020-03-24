@@ -14,8 +14,8 @@ const SEND_REPLY = gql`
 `;
 
 const LINK_STUDENTS = gql `
-    mutation linkStudents($yourEmail: String, $theirEmail: String) {
-        linkStudent(yourEmail: $yourEmail, theirEmail: $theirEmail) {
+    mutation linkStudents($yourEmail: String, $theirEmail: String, $nid: Int!) {
+        linkStudent(yourEmail: $yourEmail, theirEmail: $theirEmail, nid: $nid) {
             _id
             firstname
             lastname
@@ -72,7 +72,8 @@ return {
           mutation: LINK_STUDENTS,
           variables: {
               yourEmail: sessionEmail,
-              theirEmail: user
+              theirEmail: user,
+              nid: parseInt(nid)
           }
         })
         .catch(e => {
@@ -95,7 +96,7 @@ return {
 <Button condition="Reject Request"/>
 </div>
 {:else if status == "accepted"}
-<p>{user} has accepted your request, confirm below!</p>
+<p>{user} has accepted your request, confirm below! {nid}</p>
 <a on:click={link}><Button condition="Confirm"/> </a>
 {/if}
 </div>

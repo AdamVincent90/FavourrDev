@@ -1,18 +1,22 @@
 <script>
+  import SettingsCollapse from "../../components/SettingsCollapse.svelte";
+  import Divider from "../../components/Divider.svelte";
+  import { slide, fade } from "svelte/transition";
+  import { onMount, beforeUpdate } from "svelte";
 
-//import Collapse from '../../components/Collapse.svelte';
-import Divider from '../../components/Divider.svelte';
+  export let student;
+  
+onMount(async () => {
 
-import { slide, fade } from "svelte/transition";
+  let sessionData = JSON.parse(sessionStorage.getItem('student'));
+  let sessionEmail = sessionData.studentByEmail[0].email;
+
+    student = await fetch(`preferences/${sessionEmail}.json`)
+      .then(res => res.json())
+      .then(data => (student = data));
+  });
 
 </script>
 
-
-
-<div in:fade="{{ y: 100, duration: 800 }}" out:slide>
-<h5 class="center">Settings</h5>
-    <Divider/>
-<!-- <Collapse header="Edit Details"/>
-    <Collapse header="Notification Settings"/>
-        <Collapse header="Privacy"/> -->
-</div>
+<SettingsCollapse head="Edit your details" {student}/>
+<SettingsCollapse head="Change your password" {student}/>

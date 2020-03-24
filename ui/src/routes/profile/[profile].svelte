@@ -71,6 +71,7 @@
   {#await $student}
   <Loader />
   {:then result}
+  <h5>Reviews</h5>
   {#each result.data.getReviews as {name, byUser, title, description}}
   <ProfileBanner name={name} user={byUser} title={title} description={description}/>
   {/each}

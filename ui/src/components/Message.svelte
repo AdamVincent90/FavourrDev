@@ -23,12 +23,6 @@ export let body;
 export let avatar;
 export let name;
  export let use;
-export let modal = false;
-
-
- function loadModal() {
-  modal = true;
-}
 
 </script>
 
@@ -57,7 +51,8 @@ h5 {font-size: 20px;}
     <li class="collection-item">
     <img src="https://api.adorable.io/avatars/50/{avatar}" alt="from user">
     {#if use == "Inbox"}
-      <i on:click={loadModal} class="material-icons secondary-content">reply</i>
+      <a class="modal-trigger" href="#{avatar}1"><i class="material-icons secondary-content">reply</i></a>
+      <ComposeMessage email={avatar} name={name}/>
       {/if}
       <div class="divider"/>
       <div class="center">
@@ -73,6 +68,3 @@ h5 {font-size: 20px;}
 </div>
 </li>
 </ul>
-{#if modal === true}
-<ComposeMessage name={name} email={avatar}/>
-{/if}

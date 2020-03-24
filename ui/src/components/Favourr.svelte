@@ -97,7 +97,7 @@
   }
 </style>
 
-<div in:slide>
+<!-- <div in:slide>
   <div class="col l4 m6 s12">
     <div class="card hoverable z-depth-2">
       <div class="card-image waves-effect waves-block waves-light" />
@@ -126,4 +126,27 @@
       <Button on:click={sendRequest} condition="Apply" />
     </div>
   </div>
-</div>
+</div> -->
+
+<div in:slide>
+    <div class="col l4 m6 s12">
+      <div class="card hoverable z-depth-1">
+        <div class="card-image">
+          <img src="https://api.adorable.io/avatars/150/{user}" alt="user" class="responsive-img circle">
+          <span class="card-title">{title}</span>
+        </div>
+        <div class="card-content">
+          <p>{description}</p>
+          <div class="divider"/>
+        </div>
+        <div style="margin-top: -20px;" class="card-content">
+        <p style="font-weight: bold;">This user requires to be:</p>
+        <p>{pre1}, {pre2}, {pre3}, {pre4}</p>
+        <div class="divider"/>
+        </div>
+        <div class="card-action">
+          <a on:click={sendRequest}>Apply</a>
+        </div>
+      </div>
+    </div>
+  </div>

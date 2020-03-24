@@ -37,6 +37,7 @@
 
   export let email;
   export let name;
+  export let sid;
 
   export let header;
   export let body;
@@ -85,7 +86,7 @@
   }
 </script>
 
-<div id="modal1" class="modal">
+<div id="{email}1" class="modal">
   <div class="modal-content z-depth-4">
     <div class="center">
       <img
