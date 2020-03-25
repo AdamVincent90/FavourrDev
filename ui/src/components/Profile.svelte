@@ -19,6 +19,8 @@
     color: #212121;
   }
 
+  h5 {font-size: 18px;}
+
   .profile-container {
     background-color: #fffcfc;
     padding: 10px 10px 10px 10px;
@@ -30,18 +32,18 @@
   <div class="center">
     <img
       class="responsive-img z-depth-1"
-      src="https://api.adorable.io/avatars/40/{email}"
+      src="https://api.adorable.io/avatars/100/{email}"
       alt="profile of user" />
-    <div class="row">
-      <h5 class="profile-headers">{firstname} {lastname}</h5>
-      <h5 class="profile-headers">{profession}</h5>
+    <div class="center">
+      <p class="profile-headers">{firstname} {lastname}</p>
+      <p class="profile-headers">{profession}</p>
     </div>
   </div>
   <div class="center row socials">
-    <i class="material-icons col l4 s4 m4">menu</i>
-    <i class="material-icons col l4 s4 m4">menu</i>
-    <i class="material-icons col l4 s4 m4">menu</i>
+    <i class="material-icons col l4 s4 m4">face</i>
+    <i class="material-icons col l4 s4 m4">face</i>
+    <i class="material-icons col l4 s4 m4">face</i>
   </div>
   <div class="divider" />
-  <p class="center">{bio}</p>
+  <h5 class="center">{bio}</h5>
 </div>

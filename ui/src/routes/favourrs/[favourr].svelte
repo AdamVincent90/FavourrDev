@@ -65,11 +65,7 @@ export async function preload({params}) {
 
 <div in:fade={{ y: 100, duration: 800 }} out:slide>
   <h1 class="">List of all available {category} Favourrs!</h1>
-  <FilterButton type="Newest" />
-  <FilterButton type="Best Match" />
-
   <Divider />
-
   <div class="row pageLayout">
     {#await $favourrs}
     <Loader/>

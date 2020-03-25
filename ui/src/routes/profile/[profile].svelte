@@ -57,23 +57,22 @@
 </style>
 
 <div in:fade={{ y: 100, duration: 800 }} out:slide>
-  <Divider />
 
   {#await $student}
     <Loader />
   {:then result}
-  {#each result.data.studentById as {firstname, lastname, bio, profession, email}}
-    <Profile firstname={firstname} lastname={lastname} bio={bio} profession={profession} email={email} />
+    {#each result.data.studentById as { firstname, lastname, bio, profession, email }}
+      <Profile {firstname} {lastname} {bio} {profession} {email} />
     {/each}
   {/await}
 
   <div class="divider" />
   {#await $student}
-  <Loader />
+    <Loader />
   {:then result}
-  <h5>Reviews</h5>
-  {#each result.data.getReviews as {name, byUser, title, description}}
-  <ProfileBanner name={name} user={byUser} title={title} description={description}/>
-  {/each}
+    <h5>Reviews</h5>
+    {#each result.data.getReviews as { name, byUser, title, description }}
+      <ProfileBanner {name} user={byUser} {title} {description} />
+    {/each}
   {/await}
 </div>

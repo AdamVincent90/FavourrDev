@@ -39,15 +39,15 @@ ul
                   <li><a class="grey-text text-lighten-3" href="#!"><img src="facebook-box.png" alt="facebook"/></a></li>
                 </ul>
               </div>
-              <div class="col l12 s12 center">
+              <div class=" row col l12 s12 center">
                 <a href="contact">Contact us</a>
               </div>
-              <div class="col l12 s12 center">
+              <div class=" row col l12 s12 center">
               <a href="terms">Terms and Conditions</a>
               </div>
             </div>
           </div>
-          <div class="footer-copyright">
+          <div class="footer-copyright blue darken-1">
             <div class="container center">
             © 2020 Copyright Adam Vincent
             </div>

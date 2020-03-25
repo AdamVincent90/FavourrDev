@@ -135,18 +135,20 @@
           <img src="https://api.adorable.io/avatars/150/{user}" alt="user" class="responsive-img circle">
           <span class="card-title">{title}</span>
         </div>
-        <div class="card-content">
+        <div class="card-reveal">
           <p>{description}</p>
-          <div class="divider"/>
-        </div>
-        <div style="margin-top: -20px;" class="card-content">
         <p style="font-weight: bold;">This user requires to be:</p>
         <p>{pre1}, {pre2}, {pre3}, {pre4}</p>
         <div class="divider"/>
+        <div class="card-action">
+        <a on:click={sendRequest}>Apply</a>
+        <i class="material-icons right activator">close</i>
+        </div>
         </div>
         <div class="card-action">
           <a on:click={sendRequest}>Apply</a>
-        </div>
+          <i class="material-icons right activator">more_vert</i>
+          </div>
       </div>
     </div>
   </div>

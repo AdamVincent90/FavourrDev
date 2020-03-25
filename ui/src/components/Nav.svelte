@@ -35,7 +35,7 @@ if (sessionStorage.getItem('student')) {
     border-bottom: 2px solid #ffce51;
     overflow: hidden;
     position: fixed;
-    z-index: 1;
+    z-index: 5;
   }
 
   .style-sidenav {

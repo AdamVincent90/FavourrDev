@@ -18,5 +18,5 @@ onMount(async () => {
 
 </script>
 
-<SettingsCollapse head="Edit your details" {student}/>
-<SettingsCollapse head="Change your password" {student}/>
+<SettingsCollapse head="Edit your details" student={student}/>
+<SettingsCollapse head="Change your password" student={student}/>

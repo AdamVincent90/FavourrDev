@@ -167,4 +167,14 @@ type Mutation {
     @cypher(
       statement: "MATCH (s1:Student{email: $yourEmail}), (s2:Student{email: $theirEmail}) MERGE (s1)-[:WRITES]->(r:Review{byUser: $yourEmail, name: $name, title: $title, description: $description})<-[:GETS]-(s2) RETURN r"
       )
+      editDetails(
+      email: String,
+      firstname: String,
+      lastname: String,
+      bio: String,
+      profession: String
+      ): [Student]
+      @cypher(
+        statement: "MATCH (s:Student{email: $email}) SET s.firstname = $firstname, s.lastname = $lastname, s.bio = $bio, s.profession = $profession RETURN s"
+        )
 }

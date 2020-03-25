@@ -1,8 +1,11 @@
 <script>
 import { onMount } from "svelte";
 import Divider from "../components/Divider.svelte";
+import EditDetails from "../components/EditDetails.svelte";
+import EditPassword from "../components/EditPassword.svelte";
 
 export let head;
+export let student;
 
 onMount(async () => {
     var elems = document.querySelectorAll(".collapsible");
@@ -24,9 +27,21 @@ onMount(async () => {
       {head}
     </div>
      <div class="collapsible-body">
+     {#if student}
+     {#if head == "Edit your details"}
      <span>
-     Something here
+      {#each student.studentByEmail as {firstname, lastname, bio, profession, email}}
+      <EditDetails firstname={firstname} lastname={lastname} bio={bio} profession={profession} email={email}/>
+      {/each}
+      </span>
+      {:else if head == "Change your password"}
+      <span>
+      {#each student.studentByEmail as {password}}
+      <EditPassword />
+      {/each}
      </span>
+     {/if}
+     {/if}
      </div>
     <Divider/>
   </li>
