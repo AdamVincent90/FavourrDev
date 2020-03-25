@@ -29,6 +29,6 @@
 
 <div class="input-field col s12 m12 l12">
   <i class="material-icons prefix">check_circle</i>
-  <input type="text" bind:value={value} />
+  <input type="password" bind:value={value} />
   <label>{topic}</label>
 </div>

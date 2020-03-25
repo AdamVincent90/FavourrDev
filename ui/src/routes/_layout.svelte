@@ -18,12 +18,13 @@ if (sessionStorage.getItem('student') === null && segment !== 'login') {
 </script>
 
 <style>
-.background {background-color: #FFFCFC; }
+.background {background-image: url("white-background.jpg") }
 .container {margin-bottom: 10px; margin-top: 28px; overflow: hidden;}
 </style>
 
 <svelte:head>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Special+Elite&display=swap" rel="stylesheet">
 </svelte:head>
 
 

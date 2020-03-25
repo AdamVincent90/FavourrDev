@@ -1,6 +1,6 @@
 <style>
 
-.underline {height: 1px; width: 100%; background-color: #FFCE51; margin-bottom: 30px;}
+.underline {height: 1px; width: 100%; background-color: #e2be28; margin-bottom: 30px;}
 
 </style>
 

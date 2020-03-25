@@ -36,8 +36,8 @@ onMount(async () => {
       </span>
       {:else if head == "Change your password"}
       <span>
-      {#each student.studentByEmail as {password}}
-      <EditPassword />
+      {#each student.studentByEmail as {email}}
+      <EditPassword {email} />
       {/each}
      </span>
      {/if}

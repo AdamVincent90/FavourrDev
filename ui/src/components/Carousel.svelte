@@ -12,7 +12,7 @@
 
 <style>
   .carousel {
-    border-bottom: 2px solid #ffce51;
+    border-bottom: 2px solid #e2be28;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     z-index: -1;
     height: 250px;
@@ -26,14 +26,14 @@
 
   .btn-floating,
   .btn-large {
-    background-color: #ffce51;
+    background-color: #e2be28;
   }
 </style>
 
 
-<div class="carousel carousel-slider z-depth-4" data-indicators="true">
+<div class="carousel carousel-slider z-depth-0" data-indicators="true">
   <div
-    class="carousel-item red lighten-2 white-text valign-wrapper"
+    class="carousel-item blue lighten-2 white-text valign-wrapper"
     href="#one!">
     <div class="container">
       <h2>First Slide</h2>
@@ -41,14 +41,14 @@
     </div>
   </div>
   <div
-    class="carousel-item amber darken-2 white-text valign-wrapper"
+    class="carousel-item blue darken-2 white-text valign-wrapper"
     href="#two!">
     <div class="container">
       <h2>Second Slide</h2>
       <p class="white-text">Etiam porta sem malesuada magna mollis euismod.</p>
     </div>
   </div>
-  <div class="carousel-item green white-text valign-wrapper" href="#three!">
+  <div class="carousel-item blue white-text valign-wrapper" href="#three!">
     <div class="container">
       <h2>Third Slide</h2>
       <p class="white-text">Etiam porta sem malesuada magna mollis euismod.</p>

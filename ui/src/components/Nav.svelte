@@ -30,9 +30,8 @@ if (sessionStorage.getItem('student')) {
 <style>
   nav {
     background-color: #2196f3;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     border-top: 6px solid #1976d2;
-    border-bottom: 2px solid #ffce51;
+    border-bottom: 2px solid #e2be28;
     overflow: hidden;
     position: fixed;
     z-index: 5;
@@ -51,14 +50,13 @@ if (sessionStorage.getItem('student')) {
   li {
     color: #fffcfc;
     font-weight: bold;
-    font-family: Roboto;
   }
 
   .brand-logo {
-    font-family: Roboto;
     color: #fffcfc;
     padding-left: 50px;
     font-weight: bold;
+    font-family: 'Special Elite', cursive;
   }
 
   .brand-logo {
@@ -174,7 +172,7 @@ if (sessionStorage.getItem('student')) {
   </ul>
   <div class="style-sidenav center">
     <a href="preferences">
-      <i class="material-icons">settings</i>
+      <i  style="margin-top: 10px;" class="material-icons">settings</i>
     </a>
 
     <a href="login">

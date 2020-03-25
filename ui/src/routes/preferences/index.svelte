@@ -20,3 +20,4 @@ onMount(async () => {
 
 <SettingsCollapse head="Edit your details" student={student}/>
 <SettingsCollapse head="Change your password" student={student}/>
+<SettingsCollapse head="Manage Favourrs" student={student}/>

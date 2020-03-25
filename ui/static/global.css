@@ -1,9 +1,13 @@
 body {
 	margin: 0;
-	font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	font-family: 'Special Elite', cursive;
 	font-size: 14px;
 	line-height: 1.5;
 	color: #333;
+}
+
+nav {
+	font-family: 'Special Elite', cursive;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -7,6 +7,7 @@
     background-color: #ffffff;
     color: #212121;
     margin-bottom: 10px;
+    font-family: 'Special Elite', cursive;
   }
 
   button:hover {

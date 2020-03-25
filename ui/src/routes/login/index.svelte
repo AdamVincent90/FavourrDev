@@ -51,8 +51,7 @@ if(email && password) {
       <h5 class="col l12 s12 m12">Login Below</h5>
       <TextField class="col l6 m6 s6" topic="Email" bind:value={email}/>
       <TextField class="col l6 m6 s6" topic="Password" bind:value={password}/>
-      <Button condition="Login"/>
-      <button on:click={validate}>hit</button>
+      <a on:click={validate}><Button condition="Login"/></a>
     </div>
   <div class="modal-footer">
     <p class="center">

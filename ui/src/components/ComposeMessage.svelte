@@ -86,7 +86,7 @@
   }
 </script>
 
-<div id="{email}1" class="modal">
+<div id="{email}1" class="modal" style="z-index: -1">
   <div class="modal-content z-depth-4">
     <div class="center">
       <img

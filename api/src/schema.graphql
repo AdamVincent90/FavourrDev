@@ -177,4 +177,11 @@ type Mutation {
       @cypher(
         statement: "MATCH (s:Student{email: $email}) SET s.firstname = $firstname, s.lastname = $lastname, s.bio = $bio, s.profession = $profession RETURN s"
         )
+      changePassword(
+      email: String,
+      pwd: String
+      ): [Student]
+      @cypher(
+        statement: "MATCH (s:student{email: $email}) SET s.password = $pwd RETURN s"
+        )
 }
