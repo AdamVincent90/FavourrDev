@@ -13,12 +13,12 @@
   }
 
   i {
-    font-size: 90px;
+    font-size: 100px;
     color: #b1b1b1;
   }
   
   h1 {
-    font-size: 1rem;
+    font-size: 15px;
     font-weight: bold;
     color: #212121;
     padding-bottom: 10px;
@@ -34,7 +34,7 @@
 
   @media only screen and (max-width: 600px) {
     h1 {
-      font-size: 0.8rem;
+      font-size: 14px;
     }
   }
 </style>

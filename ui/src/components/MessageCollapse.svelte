@@ -38,10 +38,11 @@
   .collapsible-body {
     background-color: #FFFCFC;
   }
+  .material-icons {color: #e2be28;}
 </style>
 
 <ul class="collapsible" data-collapsible="expandable">
-  <li class="z-depth-1">
+  <li class="z-depth-0">
     <div class="collapsible-header">
       <i class="material-icons">chevron_right</i>
       {name}

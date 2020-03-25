@@ -41,6 +41,13 @@ if(email && password) {
  
 </script>
 
+<style>
+
+a {text-decoration: none;}
+
+
+</style>
+
 
 <h4>Login required</h4>
     <p>

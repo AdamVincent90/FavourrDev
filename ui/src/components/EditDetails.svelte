@@ -57,6 +57,6 @@ async function submitDetails() {
     <Textfield topic="lastname" bind:value={lastname}/>
     <Textfield topic="bio" bind:value={bio}/>
     <Textfield topic="profession" bind:value={profession}/>
-    <div class="divider"/>
     <a on:click={submitDetails}><Button condition="Edit details"/></a>
+    <div class="divider"/>
 </div>

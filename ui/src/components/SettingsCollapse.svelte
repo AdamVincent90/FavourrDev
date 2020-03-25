@@ -20,8 +20,12 @@ onMount(async () => {
 
 </script>
 
+<style>
+  .material-icons {color: #e2be28;}
+</style>
+
 <ul class="collapsible" data-collapsible="expandable">
-  <li class="z-depth-1">
+  <li class="z-depth-0">
     <div class="collapsible-header">
       <i class="material-icons">chevron_right</i>
       {head}
@@ -43,6 +47,6 @@ onMount(async () => {
      {/if}
      {/if}
      </div>
-    <Divider/>
+     <Divider/>
   </li>
 </ul>

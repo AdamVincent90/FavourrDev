@@ -3,12 +3,14 @@ body {
 	font-family: 'Special Elite', cursive;
 	font-size: 14px;
 	line-height: 1.5;
-	color: #333;
+	color: #212121;
 }
 
 nav {
 	font-family: 'Special Elite', cursive;
 }
+
+p {color: #212121;}
 
 h1, h2, h3, h4, h5, h6 {
 	margin: 0 0 0.5em 0;
@@ -16,16 +18,9 @@ h1, h2, h3, h4, h5, h6 {
 	line-height: 1.2;
 	color: #212121;
 }
-
-h1 {
-	font-size: 2em;
-}
-
 a {
 	color: inherit;
 }
-
-.brand-logo {font-family: Roboto;}
 
 code {
 	font-family: menlo, inconsolata, monospace;

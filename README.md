@@ -1,3 +1,15 @@
+# Quick-start
+
+For people who will  use the web-application for evaluation..
+
+-Download/clone the repo above
+-Open your code editor and access the code editors terminal/external terminal
+-Navigate to the API and UI directory (two terminals) and run "npm install"
+-Due to updates, "npm run audit" maybe requrired to run after
+-In both API and UI directories, run "npm run dev" to run the localhost development servers
+-Access web-application with your browser at localhost:3000
+-Using your mobile device please access your router ip from where the localhost is running on port 3000 etc 191.168.1.1:3000
+
 # University Dissertation Project
 
 This application is developed for the purpose of allowing students to collaborate with each other by using their own expertise in order to solve another students problem, this web-application will allow a student to either: create a favourr they need help of a fellow student who has or shares expertise within the field, or to find potential tasks or requests to help students by gaining experience and confidence within their chosen profession.

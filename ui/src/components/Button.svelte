@@ -4,9 +4,8 @@
 
 <style>
   button {
-    background-color: #ffffff;
-    color: #212121;
-    margin-bottom: 10px;
+    background-color: #e2be28;
+    color: white;
     font-family: 'Special Elite', cursive;
   }
 

@@ -55,8 +55,7 @@ export async function preload({params}) {
 </script>
 
 <style>
-  h1 {
-    text-align: center;
+  h5 {
     font-size: 32px;
     width: 100%;
     text-shadow: 0 1px 1px #212121;
@@ -64,7 +63,7 @@ export async function preload({params}) {
 </style>
 
 <div in:fade={{ y: 100, duration: 800 }} out:slide>
-  <h1 class="">List of all available {category} Favourrs!</h1>
+  <h5>List of all available {category} Favourrs!</h5>
   <Divider />
   <div class="row pageLayout">
     {#await $favourrs}

@@ -28,7 +28,7 @@ export let name;
 
 <style>
 h5 {font-size: 20px;}
-.material-icons {color: black}
+.material-icons {color: #e2be28}
 .collapsible-header {
     background-color: #FFFCFC;
   }
@@ -54,8 +54,7 @@ h5 {font-size: 20px;}
       <a class="modal-trigger" href="#{avatar}1"><i class="material-icons secondary-content">reply</i></a>
       <ComposeMessage email={avatar} name={name}/>
       {/if}
-      <div class="divider"/>
-      <div class="center">
+      <div class="center valign-wrapper">
       <p style="font-style: italic;">Date goes here</p>
       </div>
     </li>

@@ -108,6 +108,8 @@
   .divider {width: 25%;}
 label {font-size: 15px; color: #212121;}
 
+.btn {background-color: #e2be28;}
+
 @media only screen and (max-width: 600px) {
     .divider{width: 50%;}
     label {font-size: 12px;}

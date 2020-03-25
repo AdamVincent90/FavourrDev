@@ -83,50 +83,14 @@
     border-radius: 2%;
   }
 
-  li {
-    margin-top: 10px;
-  }
-
-  ol {
-    font-size: 12px;
-    font-weight: bold;
-  }
+  .apply {color: #e2be28!important;}
+  
+  .card-action { color: #e2be28}
 
   span {
     padding-bottom: 10px;
   }
 </style>
-
-<!-- <div in:slide>
-  <div class="col l4 m6 s12">
-    <div class="card hoverable z-depth-2">
-      <div class="card-image waves-effect waves-block waves-light" />
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">
-          {title}
-          <i class="material-icons right">more_vert</i>
-        </span>
-        <p>Requirements:</p>
-        <ol class="row left">
-          <li class="col s12 m12 l12">{pre1}</li>
-          <li class="col s12 m12 l12">{pre2}</li>
-          <li class="col s12 m12 l12">{pre3}</li>
-          <li class="col s12 m12 l12">{pre4}</li>
-        </ol>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">
-          <img src="https://api.adorable.io/avatars/80/{user}" alt="amazing" />
-          <i class="material-icons right">close</i>
-        </span>
-        <p>{description}</p>
-        <Button on:click={sendRequest} condition="Apply" />
-        <button on:click={sendRequest}>hit</button>
-      </div>
-      <Button on:click={sendRequest} condition="Apply" />
-    </div>
-  </div>
-</div> -->
 
 <div in:slide>
     <div class="col l4 m6 s12">
@@ -141,12 +105,12 @@
         <p>{pre1}, {pre2}, {pre3}, {pre4}</p>
         <div class="divider"/>
         <div class="card-action">
-        <a on:click={sendRequest}>Apply</a>
+        <a  class="apply" on:click={sendRequest}>Apply</a>
         <i class="material-icons right activator">close</i>
         </div>
         </div>
         <div class="card-action">
-          <a on:click={sendRequest}>Apply</a>
+          <a class="apply" on:click={sendRequest}>Apply</a>
           <i class="material-icons right activator">more_vert</i>
           </div>
       </div>

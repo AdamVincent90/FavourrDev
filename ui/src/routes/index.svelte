@@ -40,7 +40,6 @@
 
 <style>
   h5 {
-    text-align: center;
     color: #212121;
     margin-top: 0;
     text-shadow: 0 1px 1px #212121;

@@ -10,13 +10,12 @@ export let sid;
 </script>
 
   <div id="{sid}" class="modal">
-  <h5 class="center">Great Choice, Please fill the form below!</h5>
   <div class="modal-content z-depth-1">
-  <a href="profile/{sid}"><Label value="View {name}'s profile"/></a>
+  <a href="profile/{sid}" class="modal-close"><Label value="View {name}'s profile"/></a>
   <a href="#{email}1" class="modal-trigger modal-close"><Label value="Send {name} a message"/></a>
   </div>
   <div class="modal-footer">
-  <p class="right">Close</p>
+  <a href="messages" class="modal-close"><p class="right">Close</p></a>
   </div>
   </div>
 

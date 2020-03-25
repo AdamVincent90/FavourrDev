@@ -18,7 +18,6 @@ if (sessionStorage.getItem('student') === null && segment !== 'login') {
 </script>
 
 <style>
-.background {background-image: url("white-background.jpg") }
 .container {margin-bottom: 10px; margin-top: 28px; overflow: hidden;}
 </style>
 

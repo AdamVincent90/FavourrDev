@@ -24,7 +24,7 @@ onMount(async () => {
 </script>
 
 <div in:fade={{ y: 100, duration: 800 }} out:slide>
-  <h5 class="center">Message Centre</h5>
+  <h5>Message Centre</h5>
   <div class="divider"/>
   <div class="center">
   <p>These students are currently collaborating with you! Send them a message!</p>
