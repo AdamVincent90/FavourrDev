@@ -24,6 +24,7 @@
 
 <script>
   import Button from "../components/Button.svelte";
+  import AlertBox from "../components/AlertBox.svelte";
   import { slide } from "svelte/transition";
   import { onMount, tick } from "svelte";
   export let title;
@@ -105,14 +106,16 @@
         <p>{pre1}, {pre2}, {pre3}, {pre4}</p>
         <div class="divider"/>
         <div class="card-action">
-        <a  class="apply" on:click={sendRequest}>Apply</a>
+        <a href="#{id}" class="apply modal-trigger" on:click={sendRequest}>Apply</a>
         <i class="material-icons right activator">close</i>
         </div>
         </div>
         <div class="card-action">
-          <a class="apply" on:click={sendRequest}>Apply</a>
+          <a href="#{id}" class="apply modal-trigger" on:click={sendRequest}>Apply</a>
           <i class="material-icons right activator">more_vert</i>
           </div>
       </div>
     </div>
   </div>
+
+  <AlertBox title="You have applied for this Favourr, now sit back and relax!" id={id}/>

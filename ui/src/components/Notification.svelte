@@ -36,6 +36,7 @@ export let nid;
 export let fid;
 
 import Button from "../components/Button.svelte";
+import AlertBox from "../components/AlertBox.svelte";
 import { onMount } from "svelte";
 
 onMount(async() => {
@@ -92,11 +93,13 @@ return {
 <p>Status: {status}</p>
 <p>Note ID: {nid} Favourr ID: {fid}</p>
 <div class="row center col l6 m6 s6">
-<a on:click={sendReq}> <Button condition="Accept Request"/></a>
+<a href="#{nid}" on:click={sendReq} class="modal-trigger"> <Button condition="Accept Request"/></a>
 <Button condition="Reject Request"/>
+<AlertBox id={nid} title="You have accepted {user}'s request! Now just wait..."/>
 </div>
 {:else if status == "accepted"}
-<p>{user} has accepted your request, confirm below! {nid}</p>
-<a on:click={link}><Button condition="Confirm"/> </a>
+<p>{user} has accepted your request, confirm below!</p>
+<a href="#{user}" on:click={link} class="modal-trigger"><Button condition="Confirm"/> </a>
+<AlertBox id={user} title="You have confirmed {user}'s request, now get collaborating!"/>
 {/if}
 </div>

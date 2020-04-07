@@ -2,6 +2,7 @@
   import Divider from "../components/Divider.svelte";
   import Dropdown from "../components/Dropdown.svelte";
   import Textfield from "../components/Textfield.svelte";
+  import AlertBox from "../components/AlertBox.svelte";
 
   import { slide, fade } from "svelte/transition";
 
@@ -13,7 +14,7 @@
   export let password;
   export let email;
   export let match;
-
+  export let success = false;
   export let dataSet;
 
   export async function preload() {
@@ -29,6 +30,7 @@
 
     if (res.status === 200) {
       console.log("Succesfull student added");
+      success = true;
     }
   }
 
@@ -60,15 +62,18 @@
 <Textfield topic="First Name" bind:value={fname}/>
 <Textfield topic="Last Name" bind:value={lname}/>
 <Textfield topic="Summary about you" bind:value={desc}/>
-<Textfield topic="University of Northampton Email" bind:value={email}/>
+<Textfield topic="UoN Email" bind:value={email}/>
 <Textfield topic="Password" bind:value={password}/>
 <Textfield topic="Confirm password" bind:value={match}/>
 </div>
     <div class="modal-footer center">
-      <h5>All good?</h5>
-      <a on:click={validate} class="modal-close">
+      <h5 class="center">All good?</h5>
+      <a href="#registered" on:click={validate} class="modal-close">
         <Button condition="Register" />
       </a>
     </div>
   </div>
 </div>
+{#if success == true}
+<AlertBox id="registered" title="You have registered, now please login and get going!"/>
+{/if}

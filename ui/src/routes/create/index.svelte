@@ -43,6 +43,7 @@
   import Button from "../../components/Button.svelte";
   import { slide, fade } from "svelte/transition";
   import Loader from "../../components/Loader.svelte";
+  import AlertBox from "../../components/AlertBox.svelte";
 
   export let title;
   export let description;
@@ -163,13 +164,15 @@ label {font-size: 15px; color: #212121;}
         <p class="col l12 m12 s12">
           Are you sure you want to submit this Favourr?
         </p>
-        <button class="btn l6 m6 s6" on:click={preload}>
+        <button href="#create" class="btn l6 m6 s6 modal-trigger" on:click={preload}>
           Yes Submit Favourr!
         </button>
-        <button class="btn l6 m6 s6 modal-trigger" on:click={popUp}>
+        <button class="btn l6 m6 s6" on:click={popUp}>
           No, let me check
         </button>
       </div>
     {/if}
   </div>
 </div>
+
+<AlertBox id="create" title="Favourr Created, now wait for them go getters!"/>

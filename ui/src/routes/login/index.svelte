@@ -2,6 +2,7 @@
  import Button from "../../components/Button.svelte";
  import TextField from "../../components/Textfield.svelte";
  import Register from "../../components/Register.svelte";
+ import Passwordfield from "../../components/Passwordfield.svelte";
  import { tick } from "svelte";
 
   export let email;
@@ -57,7 +58,7 @@ a {text-decoration: none;}
     <div class="row center">
       <h5 class="col l12 s12 m12">Login Below</h5>
       <TextField class="col l6 m6 s6" topic="Email" bind:value={email}/>
-      <TextField class="col l6 m6 s6" topic="Password" bind:value={password}/>
+      <Passwordfield class="col l6 m6 s6" topic="Password" bind:value={password}/>
       <a on:click={validate}><Button condition="Login"/></a>
     </div>
   <div class="modal-footer">
