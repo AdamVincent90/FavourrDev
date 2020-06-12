@@ -3,6 +3,8 @@ import { onMount } from "svelte";
 import Divider from "../components/Divider.svelte";
 import EditDetails from "../components/EditDetails.svelte";
 import EditPassword from "../components/EditPassword.svelte";
+import Favourr from "../components/Favourr.svelte";
+import Button from "../components/Button.svelte";
 
 export let head;
 export let student;
@@ -17,6 +19,14 @@ onMount(async () => {
     });
   });
 
+async function deleteFavourr(fid) {
+  let identifer = fid;
+
+  const res = await fetch(`../../preferences/favourrs/${identifer}.json`);
+  if (res.status === 200) {
+      console.log("Succesfull favourr deleted");
+    }
+}
 
 </script>
 
@@ -43,6 +53,13 @@ onMount(async () => {
       {#each student.studentByEmail as {email}}
       <EditPassword {email} />
       {/each}
+     </span>
+     {:else if head == "Manage Favourrs"}
+     <span>
+     {#each student.favourrByEmail as {title, description, byUser, _id, pre1, pre2, pre3, pre4}}
+     <Favourr title={title} description={description} user={byUser} pre1={pre1} pre2={pre2} pre3={pre3} pre4={pre4}/>
+   <a on:click={() => deleteFavourr(_id)} href=""> <Button condition="Delete Favourr" /></a>
+     {/each}
      </span>
      {/if}
      {/if}

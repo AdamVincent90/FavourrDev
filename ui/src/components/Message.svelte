@@ -23,6 +23,7 @@ export let body;
 export let avatar;
 export let name;
  export let use;
+ export let date;
 
 </script>
 
@@ -55,7 +56,7 @@ h5 {font-size: 20px;}
       <ComposeMessage email={avatar} name={name}/>
       {/if}
       <div class="center valign-wrapper">
-      <p style="font-style: italic;">Date goes here</p>
+      <p style="font-style: italic;">{date}</p>
       </div>
     </li>
       <h5 class="title">{header}</h5>

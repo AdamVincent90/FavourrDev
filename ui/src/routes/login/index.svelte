@@ -3,7 +3,9 @@
  import TextField from "../../components/Textfield.svelte";
  import Register from "../../components/Register.svelte";
  import Passwordfield from "../../components/Passwordfield.svelte";
- import { tick } from "svelte";
+ import UserModal from "../../components/UserModal.svelte";
+ import AlertBox from "../../components/AlertBox.svelte";
+ import {tick} from "svelte";
 
   export let email;
   export let password;
@@ -11,6 +13,9 @@
   export let cache;
 
   export let loginData;
+  export let validateLogin;
+
+ 
 
   async function validate() {
 
@@ -30,14 +35,16 @@ if(email && password) {
       const studentSession =  await res.json();
       
       sessionStorage.setItem('student', JSON.stringify(studentSession));
+      console.log(sessionStorage.getItem('student'));
+      validateLogin = "Logging In...";
+      await tick();
       window.location.replace('');
       
     }
-    else {
-      console.log("Credentials Don't exist in Database: Error-Message: Undefined email or password");
-
-    }
   }
+  else {
+      validateLogin = "Invalid username or password";
+    }
   }
  
 </script>
@@ -59,8 +66,8 @@ a {text-decoration: none;}
       <h5 class="col l12 s12 m12">Login Below</h5>
       <TextField class="col l6 m6 s6" topic="Email" bind:value={email}/>
       <Passwordfield class="col l6 m6 s6" topic="Password" bind:value={password}/>
-      <a on:click={validate}><Button condition="Login"/></a>
     </div>
+     <a href="#userlogin"  class="modal-trigger" on:click={validate}><Button condition="Login"/></a>
   <div class="modal-footer">
     <p class="center">
       New User? Register
@@ -68,4 +75,5 @@ a {text-decoration: none;}
     </p>
     </div>
 
+    <AlertBox id="userlogin" bind:title={validateLogin} />
     <Register modalName="registration"/>

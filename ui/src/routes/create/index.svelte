@@ -5,6 +5,7 @@
   const CREATE_FAVOURR = gql`
     mutation addFavourr(
       $catname: String
+      $UserId: String
       $email: String
       $title: String
       $description: String
@@ -16,6 +17,7 @@
       createFavourr(
         catname: $catname
         email: $email
+        UserId: $UserId
         title: $title
         description: $description
         pre1: $pre1
@@ -25,6 +27,7 @@
       ) {
         title
         description
+        UserId
         pre1
         pre2
         pre3
@@ -47,28 +50,30 @@
 
   export let title;
   export let description;
+  export let catname;
   export let pre1;
   export let pre2;
   export let pre3;
   export let pre4;
   export let studentEmail;
+  export let studentId;
   export let dataSet;
 
   export let instance;
 
-  import { onMount } from "svelte";
+  import { onMount, tick } from "svelte";
 
   export let cache;
 
   async function preload() {
-    let cat = "Digital Design";
-    console.log(studentEmail);
+    await tick();
     return {
       cache: await client.mutate({
         mutation: CREATE_FAVOURR,
         variables: {
-          catname: cat,
+          catname: catname,
           email: studentEmail,
+          UserId: studentId,
           title: title,
           description: description,
           pre1: pre1,
@@ -91,6 +96,7 @@
 
     let temp = JSON.parse(sessionStorage.getItem('student'));
     studentEmail = temp.studentByEmail[0].email;
+    studentId = temp.studentByEmail[0]._id;
 
   });
 
@@ -121,6 +127,9 @@ label {font-size: 15px; color: #212121;}
   <h5>Create your Favourr</h5>
      <p>Creating your Favourr is as easy as 1 2 3.. 4, and 5! Oh! And 6!</p>
      <Divider/>
+     <label>Choose a profession required</label>
+      <Dropdown bind:value={catname}/>
+      <div class="divider"/>
      <label>Enter the title of your Favourr</label>
      <div class="divider"/>
       <Textfield topic="Enter Here.." bind:value={title}/>

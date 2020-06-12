@@ -2,6 +2,7 @@ import fetch from "node-fetch";
 import { ApolloClient } from "apollo-boost";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { HttpLink } from "apollo-link-http";
+import { onError } from "apollo-link-error";
 
 let GRAPHQL_URI;
 if (typeof location !== "undefined") {
@@ -14,6 +15,10 @@ if (typeof location !== "undefined") {
 }
 console.log("Init ApolloClient " + GRAPHQL_URI);
 
+const errorLink = onError(({ graphQLErrors }) => {
+  if (graphQLErrors) graphQLErrors.map(({ message }) => console.log(message))
+})
+
 const client = new ApolloClient({
   cache: new InMemoryCache(),
   defaultOptions: {
@@ -23,8 +28,9 @@ const client = new ApolloClient({
   },
   link: new HttpLink({
     uri: GRAPHQL_URI,
-    fetch
-  })
+    fetch,
+    errorLink
+  }),
 });
 
 export default client;

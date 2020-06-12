@@ -50,15 +50,15 @@
     <div class="collapsible-body">
       {#if message}
         {#if name == 'Inbox'}
-          {#each message.messagesToUser as { header, body, user, sender, senderName }}
+          {#each message.messagesToUser as { header, body, user, sender, senderName, date }}
             <span>
-              <Message {user} {header} {body} use={name} avatar={sender} name={senderName} />
+              <Message {user} {header} {body} use={name} avatar={sender} name={senderName} date={date} />
             </span>
           {/each}
         {:else if name == 'Sent Messages'}
-          {#each message.messagesFromUser as { header, body, user, sender, senderName }}
+          {#each message.messagesFromUser as { header, body, user, sender, senderName, date }}
             <span>
-              <Message {user} {header} {body} use={name} avatar={sender} name={senderName} />
+              <Message {user} {header} {body} use={name} avatar={sender} name={senderName} date={date} />
             </span>
           {/each}
           {:else if name == 'Notifications'}

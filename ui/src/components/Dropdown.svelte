@@ -1,60 +1,46 @@
 <script>
   import { onMount } from "svelte";
+  export let option;
 
   onMount(() => {
-    // let elemSelect = document.querySelectorAll("select");
-    // let instancesSelect = M.FormSelect.init(elemSelect);
+    let elemSelect = document.querySelectorAll("select");
+    let instancesSelect = M.FormSelect.init(elemSelect);
 
-    // elemSelect = document.querySelectorAll("select");
-    // instancesSelect = M.FormSelect.init(elemSelect, options);
+    elemSelect = document.querySelectorAll("select");
+    instancesSelect = M.FormSelect.init(elemSelect);
   });
 
-  export let title;
+  export let value;
 </script>
 
 <style>
-  .input-field {
-    color: #212121;
+  option {
+    color: #e2be28 !important;
     padding: 10px 10px 10px 10px;
   }
 
-  .material-icons {
-    font-size: 30px;
-    color: #212121;
-    padding-right: 10px;
-  }
-
-  select option {
-    color: #212121;
-  }
 </style>
 
 <div class="row">
   <div class="input-field">
-    <select>
+    <select bind:value={value}>
       <option value="" disabled selected>Choose your option</option>
-      <option value="1">
-        <i class="material-icons">face</i>
+      <option value="Digital Design">
         Digital Design
       </option>
-      <option value="2">
-        <i class="material-icons">computer</i>
+      <option value="Computing">
         Computing
       </option>
-      <option value="3">
-        <i class="material-icons">photo_camera</i>
+      <option value="Art & Photography">
         Art & Photography
       </option>
-      <option value="4">
-        <i class="material-icons">insert_chart</i>
+      <option value="Business">
         Business
       </option>
-      <option value="5">
-        <i class="material-icons">apartment</i>
+      <option value="Law">
         Law
       </option>
-      <option value="6">
-        <i class="material-icons">emoji_symbols</i>
+      <option value="Other">
         Other
       </option>
     </select>

@@ -25,6 +25,10 @@ if (sessionStorage.getItem('student')) {
 }
 
   });
+
+   async function removeSession() {
+   await sessionStorage.removeItem('student');
+  }
 </script>
 
 <style>
@@ -81,9 +85,11 @@ if (sessionStorage.getItem('student')) {
       href=".">
       Favourr
     </a>
+    {#if userAvatar}
     <a href="#!" data-target="mobile-demo" class="right sidenav-trigger">
       <i class="material-icons" id="menu">menu</i>
     </a>
+    
     <ul class="right hide-on-med-and-down valign-wrapper">
       <li>
         <a href="profile/{sid}">
@@ -119,8 +125,10 @@ if (sessionStorage.getItem('student')) {
         </a>
       </li>
     </ul>
+    {/if}
   </div>
 </nav>
+
 
 <div class="sidenav" id="mobile-demo">
   <ul class="center sidenav-close style-sidenav-links">
@@ -175,7 +183,7 @@ if (sessionStorage.getItem('student')) {
       <i  style="margin-top: 10px;" class="material-icons">settings</i>
     </a>
 
-    <a href="login">
+    <a on:click={async() => removeSession()} class={segment === 'login' ? 'selected' : ''} href="login">
       <p>Log Out</p>
     </a>
   </div>

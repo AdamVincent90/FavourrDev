@@ -14,8 +14,9 @@ onMount(async () => {
     student = await fetch(`preferences/${sessionEmail}.json`)
       .then(res => res.json())
       .then(data => (student = data));
-  });
 
+      
+  });
 </script>
 <h5>Preferences</h5>
 <Divider/>

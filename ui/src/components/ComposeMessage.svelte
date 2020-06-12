@@ -7,6 +7,7 @@
       $emailSend: String
       $emailReceive: String
       $header: String
+      $date: String
       $body: String
       $senderName: String
     ) {
@@ -14,6 +15,7 @@
         emailSend: $emailSend
         emailReceive: $emailReceive
         header: $header
+        date: $date
         body: $body
         senderName: $senderName
       ) {
@@ -22,6 +24,7 @@
         sender
         receiver
         senderName
+        date
       }
     }
   `;
@@ -33,6 +36,7 @@
   import TextArea from "../components/Textarea.svelte";
   import Button from "../components/Button.svelte";
   import Divider from "../components/Divider.svelte";
+  import AlertBox from "../components/AlertBox.svelte";
   import { fade } from "svelte/transition";
 
   export let email;
@@ -46,15 +50,7 @@
   export let temp;
 
   onMount(async () => {
-    (function($) {
-      $(function() {
-        //initialize all modals
-        $(".modal").modal();
-        //now you can open modal from code
-        $("#modal1").modal("open");
-      }); // end of document ready
-    })(jQuery); // end of jQuery name space
-
+    
     let session = JSON.parse(sessionStorage.getItem("student"));
     temp = session.studentByEmail[0];
     console.log(temp);
@@ -66,6 +62,7 @@
     await tick();
 
     let fullname = temp.firstname + " " + temp.lastname;
+    let date = new Date();
 
     return {
       cache: await client
@@ -74,6 +71,7 @@
           variables: {
             emailSend: temp.email,
             emailReceive: email,
+            date: date,
             header: header,
             body: body,
             senderName: fullname
@@ -99,13 +97,15 @@
     <div class="center">
       <TextArea topic="Enter title of message" bind:value={header} />
       <TextArea topic="What are you asking?" } bind:value={body} />
-      <a on:click={validate}>
+      <a href="#sent" class="modal-trigger modal-close" on:click={validate}>
         <Button condition="Send Message" />
       </a>
     </div>
   </div>
   <div class="modal-footer">
     <div class="divider" />
-    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+    <a  class="modal-close waves-effect waves-green btn-flat">Close</a>
   </div>
 </div>
+
+<AlertBox id="sent" title="Message Sent!"/>

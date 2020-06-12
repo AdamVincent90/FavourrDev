@@ -18,6 +18,10 @@
   box-shadow: 0 1px 0 0 #e2be28 !important
 }
 
+.material-icons {
+  color: #e2be28 !important;
+}
+
 @media only screen and (max-width: 600px) {
 
   .material-icons {font-size: 20px;}

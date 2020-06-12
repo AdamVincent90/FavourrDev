@@ -9,6 +9,7 @@ const CHANGE_PASSWORD = gql `
             email
             firstname
             lastname
+            password
         }
     }
 `;

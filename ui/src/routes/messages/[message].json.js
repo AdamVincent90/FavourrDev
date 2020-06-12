@@ -8,6 +8,7 @@ const GET_MESSAGES_BY_USER = gql`
       body
       sender
       senderName
+      date
       _id
     }
     messagesFromUser(email: $email) {
@@ -15,6 +16,7 @@ const GET_MESSAGES_BY_USER = gql`
       body
       sender
       senderName
+      date
       _id
     }
     favourrNotifications(email: $email) {

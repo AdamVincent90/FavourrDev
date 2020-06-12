@@ -7,6 +7,7 @@ let GET_FAVOURR_BY_CAT = gql`
   query getFavourrs($catname: String!) {
     favourrByCat(catname: $catname) {
       _id
+      UserId
       byUser
       description
       title
@@ -45,11 +46,17 @@ export async function preload({params}) {
 
   export let cache;
   export let category;
+  export let studentId;
 
   restore(client, GET_FAVOURR_BY_CAT, cache.data);
   setClient(client);
 
   const favourrs = query(client, { query: GET_FAVOURR_BY_CAT });
+  
+  onMount(async () => {
+    let temp = JSON.parse(sessionStorage.getItem('student'));
+    studentId = temp.studentByEmail[0]._id;
+  })
 
  
 </script>
@@ -69,10 +76,12 @@ export async function preload({params}) {
     {#await $favourrs}
     <Loader/>
     {:then result}
-      {#each result.data.favourrByCat as { title, description, pre1, pre2, pre3, pre4, byUser, _id }}
+      {#each result.data.favourrByCat as { title, description, pre1, pre2, pre3, pre4, byUser, _id, UserId }}
+        {#if UserId !== studentId}
       <div in:fade={{y:200, duration: 400}}>
         <Favourr title={title} description={description} pre1={pre1} pre2={pre2} pre3={pre3} pre4={pre4} user={byUser} id={_id} />
         </div>
+        {/if}
       {/each}
       {/await}
   </div>

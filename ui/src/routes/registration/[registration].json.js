@@ -38,7 +38,7 @@ export async function get(req, res, next) {
     const newStudent = await client.mutate({
       mutation: CREATE_STUDENT,
       variables: {
-        profession: "Computing",
+        profession: studentData.catname,
         firstname: studentData.firstname,
         lastname: studentData.lastname,
         bio: studentData.bio,

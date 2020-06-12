@@ -3,6 +3,7 @@
   import Dropdown from "../components/Dropdown.svelte";
   import Textfield from "../components/Textfield.svelte";
   import AlertBox from "../components/AlertBox.svelte";
+  import PasswordField from "../components/PasswordField.svelte"
 
   import { slide, fade } from "svelte/transition";
 
@@ -15,7 +16,10 @@
   export let email;
   export let match;
   export let success = false;
+  export let catname;
   export let dataSet;
+  export let validationMessage;
+  export let link;
 
   export async function preload() {
     dataSet = {
@@ -23,14 +27,16 @@
       lastname: lname,
       bio: desc,
       password: password,
-      email: email
+      email: email,
+      catname: catname
     };
 
     const res = await fetch(`../../registration/${JSON.stringify(dataSet)}.json`);
 
     if (res.status === 200) {
-      console.log("Succesfull student added");
-      success = true;
+      validationMessage = "You have registered, now please login and get going!";
+      setTimeout(function() {window.location.replace('login')}, 3000);
+
     }
   }
 
@@ -39,11 +45,11 @@
     switch (true) {
       case (email.includes("@my.northampton.ac.uk") && password === match): preload();
         break;
-      case (!email.includes("@my.northampton.ac.uk") && password === match): console.log("Invalid Email");
+      case (!email.includes("@my.northampton.ac.uk") && password === match): validationMessage = "Invalid Email";
       break;
-      case (email.includes("@my.northampton.ac.uk") && password !== match): console.log("Password does not match!");
+      case (email.includes("@my.northampton.ac.uk") && password !== match): validationMessage = "Password does not match!";
       break;
-      default: console.log("Both password and email do not match!");
+      default: validationMessage = "Both password and email do not match!";
         break;
     }
   }
@@ -59,21 +65,28 @@
   <div id="{modalName}" class="modal">
   <h5 class="center">Great Choice, Please fill the form below!</h5>
   <div class="modal-content z-depth-1">
+  <label>Choose your University Profession</label>
+<Dropdown bind:value={catname}/>
 <Textfield topic="First Name" bind:value={fname}/>
 <Textfield topic="Last Name" bind:value={lname}/>
 <Textfield topic="Summary about you" bind:value={desc}/>
 <Textfield topic="UoN Email" bind:value={email}/>
-<Textfield topic="Password" bind:value={password}/>
-<Textfield topic="Confirm password" bind:value={match}/>
+<PasswordField topic="Password" bind:value={password}/>
+<PasswordField topic="Confirm password" bind:value={match}/>
 </div>
     <div class="modal-footer center">
-      <h5 class="center">All good?</h5>
-      <a href="#registered" on:click={validate} class="modal-close">
+      
+      {#if catname, fname, lname, desc, email, password, match}
+      <div in:fade={{ y: 100, duration: 300 }}>
+      <h6 class="center">All good?</h6>
+      <a href="#registered" on:click={validate} class="modal-trigger">
         <Button condition="Register" />
       </a>
+      </div>
+      {/if}
     </div>
   </div>
 </div>
-{#if success == true}
-<AlertBox id="registered" title="You have registered, now please login and get going!"/>
-{/if}
+
+
+<AlertBox id="registered" bind:title={validationMessage} bind:divert={link}/>

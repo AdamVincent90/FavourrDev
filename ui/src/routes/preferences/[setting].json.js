@@ -11,7 +11,18 @@ const GET_STUDENT_DETAILS = gql`
       bio
       email
       password
-    }}`;
+    }
+    favourrByEmail(email: $email) {
+      byUser
+      title
+      description
+      _id
+      pre1
+      pre2
+      pre3
+      pre4
+    }
+  }`;
 
     export async function get(req, res, next) {
   
