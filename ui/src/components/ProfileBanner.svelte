@@ -29,7 +29,7 @@ export let description;
         <div class="card-panel grey lighten-5 z-depth-`">
           <div class="row left-side">
             <div class="col s3 l2 center">
-              <a href="profile"><img src="https://api.adorable.io/avatars/40/{user}" alt="" class="responsive-img"></a>
+             <img src="https://api.adorable.io/avatars/40/{user}" alt="profile" class="responsive-img">
               <p>{name}</p>
             </div>
             <div class="col s9 l10">

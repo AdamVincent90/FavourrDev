@@ -86,8 +86,6 @@
     instance.open();
   }
 
-
-
   onMount(() => {
     let element = document.getElementById("modal1");
     instance = M.Modal.init(element, {

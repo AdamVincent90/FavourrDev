@@ -1,6 +1,6 @@
 <script>
   import Divider from "../components/Divider.svelte";
-
+  import WriteReview from "../components/WriteReview.svelte";
   export let bio;
   export let profession;
   export let firstname;
@@ -9,9 +9,11 @@
 </script>
 
 <style>
+  
   .socials {
-    margin-top: 30px;
-    padding: 0;
+    margin: 10px 5% 10px 5%;
+    height: 52px;
+    width: 52px;
   }
 
   .profile-headers {
@@ -40,15 +42,17 @@
       <p class="profile-headers">{profession}</p>
     </div>
   </div>
-  <div class="center row socials">
-    <i class="material-icons col l4 s4 m4">face</i>
-    <i class="material-icons col l4 s4 m4">face</i>
-    <i class="material-icons col l4 s4 m4">face</i>
+  <div class=" center">
+    <img class="socials" src="facebook.png" alt="facebook"/>
+    <img class="socials" src="linkedin.png" alt="linked"/>
+    <img class="socials" src="twitter.png" alt="twitter"/>
   </div>
   <h5 class="center">{bio}</h5>
   <div class="divider" />
   <div class="center likes">
   <i class="material-icons">thumb_up</i>
-  <p>Find {firstname} helpful? Give a like!</p>
+  <p>Find {firstname} helpful? write a <a href="#review" class="modal-trigger">review</a>!</p>
   </div>
 </div>
+
+<WriteReview  email={email} name={firstname} />

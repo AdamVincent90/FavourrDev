@@ -2,29 +2,25 @@
   import { gql } from "apollo-boost";
   import client from "../apollo.js";
 
-  const SEND_MESSAGE = gql`
-    mutation addMessage(
-      $emailSend: String
-      $emailReceive: String
-      $header: String
-      $date: String
-      $body: String
-      $senderName: String
+  const WRITE_REVIEW = gql`
+    mutation writeReview(
+      $yourEmail: String
+      $theirEmail: String
+      $name: String
+      $title: String
+      $description: String
     ) {
-      sendMessage(
-        emailSend: $emailSend
-        emailReceive: $emailReceive
-        header: $header
-        date: $date
-        body: $body
-        senderName: $senderName
+      reviewStudent(
+        yourEmail: $yourEmail
+        theirEmail: $theirEmail
+        title: $title
+        description: $description
+        name: $name
       ) {
-        header
-        body
-        sender
-        receiver
-        senderName
-        date
+        title
+        description
+        byUser
+        name
       }
     }
   `;
@@ -44,10 +40,11 @@
   export let sid;
 
   export let header;
-  export let body;
-
+  export let desc;
+  export let title;
   export let sessionData;
   export let temp;
+  export let review;
 
   onMount(async () => {
     
@@ -62,25 +59,17 @@
     await tick();
 
     let fullname = temp.firstname + " " + temp.lastname;
-    let date = new Date();
-    date = date.toString();
-    date = date.slice(0, 9)
-    date = date.split();
-    date = date.reverse();
-    date = date.join();
-    console.log(date);
 
     return {
       cache: await client
         .mutate({
-          mutation: SEND_MESSAGE,
+          mutation: WRITE_REVIEW,
           variables: {
-            emailSend: temp.email,
-            emailReceive: email,
-            date: date,
-            header: header,
-            body: body,
-            senderName: fullname
+            yourEmail: temp.email,
+            theirEmail: email,
+            title: title,
+            description: desc,
+            name: fullname
           }
         })
         .catch(e => {
@@ -90,7 +79,7 @@
   }
 </script>
 
-<div id="{email}1" class="modal" style="z-index: 1">
+<div id="review" class="modal" style="z-index: 1">
   <div class="modal-content z-depth-4">
     <div class="center">
       <img
@@ -101,9 +90,9 @@
     </div>
     <Divider />
     <div class="center">
-      <TextArea topic="Enter title of message" bind:value={header} />
-      <TextArea topic="What are you asking?" } bind:value={body} />
-      <a href="#sent" class="modal-trigger modal-close" on:click={validate}>
+      <TextArea topic="Review Title" bind:value={title} />
+      <TextArea topic="Review {name} here!" } bind:value={desc} />
+      <a href="#dispatched" class="modal-trigger modal-close" on:click={validate}>
         <Button condition="Send Message" />
       </a>
     </div>
@@ -114,4 +103,4 @@
   </div>
 </div>
 
-<AlertBox id="sent" title="Message Sent!"/>
+<AlertBox id="dispatched" title="Review Added!"/>

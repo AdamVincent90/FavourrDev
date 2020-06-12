@@ -5,6 +5,7 @@
   let GET_STUDENT_DATA = gql`
     query getStudent($sid: Int!) {
       studentById(sid: $sid) {
+        _id
         firstname
         lastname
         bio
@@ -42,6 +43,7 @@
   import Loader from "../../components/Loader.svelte";
   import { slide, fade } from "svelte/transition";
   import { setClient, restore, query } from "svelte-apollo";
+  import WriteReview from "../../components/WriteReview.svelte";
 
   export let cache;
 
@@ -61,7 +63,7 @@
   {#await $student}
     <Loader />
   {:then result}
-    {#each result.data.studentById as { firstname, lastname, bio, profession, email }}
+    {#each result.data.studentById as { _id, firstname, lastname, bio, profession, email }}
       <Profile {firstname} {lastname} {bio} {profession} {email} />
     {/each}
   {/await}

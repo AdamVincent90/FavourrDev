@@ -43,6 +43,8 @@ export async function preload({params}) {
   import { stores } from "@sapper/app";
   import { setClient, restore, query } from "svelte-apollo";
 
+  const {page} = stores();
+  const cat = $page.params;
 
   export let cache;
   export let category;
@@ -51,9 +53,12 @@ export async function preload({params}) {
   restore(client, GET_FAVOURR_BY_CAT, cache.data);
   setClient(client);
 
+  
+
   const favourrs = query(client, { query: GET_FAVOURR_BY_CAT });
   
   onMount(async () => {
+    category = cat.favourr;
     let temp = JSON.parse(sessionStorage.getItem('student'));
     studentId = temp.studentByEmail[0]._id;
   })
