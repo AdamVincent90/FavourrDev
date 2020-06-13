@@ -1,19 +1,30 @@
 <script>
   import Divider from "../components/Divider.svelte";
   import WriteReview from "../components/WriteReview.svelte";
+  import {onMount} from "svelte";
   export let bio;
   export let profession;
   export let firstname;
   export let lastname;
   export let email;
+  export let twitter;
+  export let facebook;
+  export let linkedin;
+  export let sessionEmail;
+
+  onMount(async() => {
+    let temp = JSON.parse(sessionStorage.getItem('student'));
+    sessionEmail = temp.studentByEmail[0].email;
+    console.log(sessionEmail);
+  })
 </script>
 
 <style>
   
   .socials {
     margin: 10px 5% 10px 5%;
-    height: 52px;
-    width: 52px;
+    height: 40px;
+    width: 40px;
   }
 
   .profile-headers {
@@ -43,15 +54,17 @@
     </div>
   </div>
   <div class=" center">
-    <img class="socials" src="facebook.png" alt="facebook"/>
-    <img class="socials" src="linkedin.png" alt="linked"/>
-    <img class="socials" src="twitter.png" alt="twitter"/>
+    <a href="https://www.{facebook}"><img class="socials" src="facebook.png" alt="facebook"/></a>
+    <a href="https://www.{linkedin}"><img class="socials" src="linkedin.png" alt="linkedin"/></a>
+    <a href="https://www.{twitter}"><img class="socials" src="twitter.png" alt="twitter"/></a>
   </div>
   <h5 class="center">{bio}</h5>
   <div class="divider" />
   <div class="center likes">
   <i class="material-icons">thumb_up</i>
+  {#if sessionEmail !== email}
   <p>Find {firstname} helpful? write a <a href="#review" class="modal-trigger">review</a>!</p>
+  {/if}
   </div>
 </div>
 

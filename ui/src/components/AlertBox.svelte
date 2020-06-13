@@ -33,6 +33,6 @@ beforeUpdate(() => {
        {/if}
     </div>
     <div class="modal-footer">
-      <a href="{divert}" class="modal-close waves-effect waves-green btn-flat">OK!</a>
+      <a href={divert} class="modal-close waves-effect waves-green btn-flat">OK!</a>
     </div>
   </div>

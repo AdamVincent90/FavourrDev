@@ -28,7 +28,8 @@
       bio: desc,
       password: password,
       email: email,
-      catname: catname
+      catname: catname,
+      default: ""
     };
 
     const res = await fetch(`../../registration/${JSON.stringify(dataSet)}.json`);

@@ -74,7 +74,9 @@
         })
         .catch(e => {
           console.log(e);
-        })
+        }).then(setTimeout(() => {
+        location.reload();
+    }, 1000))
     };
   }
 </script>
@@ -86,14 +88,14 @@
         class="z-depth-1"
         src="https://api.adorable.io/avatars/50/{email}"
         alt="send {name} a message" />
-      <p>Send {name} a message!</p>
+      <p>Give {name} a review!</p>
     </div>
     <Divider />
     <div class="center">
       <TextArea topic="Review Title" bind:value={title} />
       <TextArea topic="Review {name} here!" } bind:value={desc} />
       <a href="#dispatched" class="modal-trigger modal-close" on:click={validate}>
-        <Button condition="Send Message" />
+        <Button condition="Write Review" />
       </a>
     </div>
   </div>

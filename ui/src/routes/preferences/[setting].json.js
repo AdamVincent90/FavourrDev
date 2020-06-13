@@ -11,6 +11,9 @@ const GET_STUDENT_DETAILS = gql`
       bio
       email
       password
+      twitter
+      facebook
+      linkedin
     }
     favourrByEmail(email: $email) {
       byUser

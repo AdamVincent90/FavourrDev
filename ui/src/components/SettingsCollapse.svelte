@@ -3,7 +3,7 @@ import { onMount } from "svelte";
 import Divider from "../components/Divider.svelte";
 import EditDetails from "../components/EditDetails.svelte";
 import EditPassword from "../components/EditPassword.svelte";
-import Favourr from "../components/Favourr.svelte";
+import ManageFavourr from "../components/ManageFavourr.svelte";
 import Button from "../components/Button.svelte";
 
 export let head;
@@ -18,15 +18,6 @@ onMount(async () => {
       inDuration: 600
     });
   });
-
-async function deleteFavourr(fid) {
-  let identifer = fid;
-
-  const res = await fetch(`../../preferences/favourrs/${identifer}.json`);
-  if (res.status === 200) {
-      console.log("Succesfull favourr deleted");
-    }
-}
 
 </script>
 
@@ -44,8 +35,8 @@ async function deleteFavourr(fid) {
      {#if student}
      {#if head == "Edit your details"}
      <span>
-      {#each student.studentByEmail as {firstname, lastname, bio, profession, email}}
-      <EditDetails firstname={firstname} lastname={lastname} bio={bio} profession={profession} email={email}/>
+      {#each student.studentByEmail as {firstname, lastname, bio, profession, email, facebook, linkedin, twitter}}
+      <EditDetails firstname={firstname} lastname={lastname} bio={bio} profession={profession} email={email} facebook={facebook} twitter={twitter} linkedin={linkedin}/>
       {/each}
       </span>
       {:else if head == "Change your password"}
@@ -55,10 +46,9 @@ async function deleteFavourr(fid) {
       {/each}
      </span>
      {:else if head == "Manage Favourrs"}
-     <span>
+     <span class="row">
      {#each student.favourrByEmail as {title, description, byUser, _id, pre1, pre2, pre3, pre4}}
-     <Favourr title={title} description={description} user={byUser} pre1={pre1} pre2={pre2} pre3={pre3} pre4={pre4}/>
-   <a on:click={() => deleteFavourr(_id)} href=""> <Button condition="Delete Favourr" /></a>
+     <ManageFavourr title={title} description={description} user={byUser} pre1={pre1} pre2={pre2} pre3={pre3} pre4={pre4} id={_id}/>
      {/each}
      </span>
      {/if}

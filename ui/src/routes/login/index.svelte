@@ -6,6 +6,7 @@
  import UserModal from "../../components/UserModal.svelte";
  import AlertBox from "../../components/AlertBox.svelte";
  import {tick} from "svelte";
+ import {slide, fade} from "svelte/transition";
 
   export let email;
   export let password;
@@ -56,7 +57,7 @@ a {text-decoration: none;}
 
 </style>
 
-
+<div in:fade="{{ y: 100, duration: 800 }}" out:slide>
 <h4>Login required</h4>
     <p>
       To use this Web Application, you must sign up or log in with a University
@@ -74,6 +75,6 @@ a {text-decoration: none;}
       <a href="#registration" class="modal-trigger">here</a>
     </p>
     </div>
-
+</div>
     <AlertBox id="userlogin" bind:title={validateLogin} />
     <Register modalName="registration"/>

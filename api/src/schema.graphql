@@ -26,6 +26,9 @@ type Student {
   profession: String
   bio: String
   likes: Int!
+  facebook: String
+  twitter: String
+  linkedin: String
 }
 
 type Notification {
@@ -98,7 +101,7 @@ type Query {
 
 type Mutation {
 deleteFavourr (
-  fid: Int!
+  fid: Int
   ): [Favourr]
     @cypher(
       statement: "MATCH (f:Favourr) WHERE id(f) = $fid DETACH DELETE f"
@@ -133,9 +136,10 @@ deleteFavourr (
     email: String
     bio: String
     password: String
+    default: String
   ): [Student]
     @cypher(
-      statement: "MATCH (c:Category{name: $profession}) MERGE (c)<-[:SKILLED_IN]-(s:Student{firstname: $firstname, lastname: $lastname, email: $email, bio: $bio, password: $password, profession: $profession}) RETURN s"
+      statement: "MATCH (c:Category{name: $profession}) MERGE (c)<-[:SKILLED_IN]-(s:Student{firstname: $firstname, lastname: $lastname, email: $email, bio: $bio, password: $password, profession: $profession, twitter: $default, linkedin: $default, facebook: $default}) RETURN s"
     )
   sendMessage(
     emailSend: String
@@ -186,10 +190,13 @@ deleteFavourr (
       firstname: String,
       lastname: String,
       bio: String,
-      profession: String
+      profession: String,
+      twitter: String,
+      facebook: String,
+      linkedin: String
       ): [Student]
       @cypher(
-        statement: "MATCH (s:Student{email: $email}) SET s.firstname = $firstname, s.lastname = $lastname, s.bio = $bio, s.profession = $profession RETURN s"
+        statement: "MATCH (s:Student{email: $email}) SET s.firstname = $firstname, s.lastname = $lastname, s.bio = $bio, s.profession = $profession, s.facebook = $facebook, s.linkedin = $linkedin, s.twitter = $twitter RETURN s"
         )
       changePassword(
       email: String,

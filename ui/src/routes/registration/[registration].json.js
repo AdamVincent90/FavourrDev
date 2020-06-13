@@ -12,6 +12,7 @@ const CREATE_STUDENT = gql`
     $email: String
     $bio: String
     $password: String
+    $default: String
   ) {
     createStudent(
       profession: $profession
@@ -20,6 +21,7 @@ const CREATE_STUDENT = gql`
       email: $email
       bio: $bio
       password: $password
+      default: $default
     ) {
       firstname
       lastname
@@ -43,7 +45,8 @@ export async function get(req, res, next) {
         lastname: studentData.lastname,
         bio: studentData.bio,
         email: studentData.email,
-        password: hash
+        password: hash,
+        default: studentData.default
       }
     });
     if (newStudent !== null) {

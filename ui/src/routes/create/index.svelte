@@ -81,9 +81,10 @@
           pre3: pre3,
           pre4: pre4
         }
-      })
+      }).then(setTimeout(() => {
+        window.location.replace('');
+    }, 1000))
     };
-    instance.open();
   }
 
   onMount(() => {

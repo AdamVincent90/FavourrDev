@@ -34,9 +34,9 @@ ul
               <div class="col l12 s12">
               <div class="col l12 s12 center">
                 <ul>
-                  <li><a class="grey-text text-lighten-3" href="#!"><img src="linkedin-box.png" alt="facebook"/></a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!"><img src="twitter-box.png" alt="facebook"/></a></li>
-                  <li><a class="grey-text text-lighten-3" href="#!"><img src="facebook-box.png" alt="facebook"/></a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/adamvincentuk/"><img src="linkedin-box.png" alt="facebook"/></a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://twitter.com/Juddu_"><img src="twitter-box.png" alt="facebook"/></a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.facebook.com/Judduuk/"><img src="facebook-box.png" alt="facebook"/></a></li>
                 </ul>
               </div>
               <div class=" row col l12 s12 center">

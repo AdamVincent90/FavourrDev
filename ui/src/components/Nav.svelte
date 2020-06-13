@@ -28,6 +28,7 @@ if (sessionStorage.getItem('student')) {
 
    async function removeSession() {
    await sessionStorage.removeItem('student');
+   window.location.replace('login')
   }
 </script>
 
@@ -47,7 +48,6 @@ if (sessionStorage.getItem('student')) {
     height: 20%;
     position: fixed;
     bottom: 0;
-    padding: 5px 5px 5px 5px;
   }
 
   a,
@@ -73,7 +73,7 @@ if (sessionStorage.getItem('student')) {
   }
 
   .style-sidenav-links {
-    padding: 10px 10px 10px 10px;
+    padding: 30px 0px 30px 0px;
   }
 </style>
 
@@ -91,6 +91,11 @@ if (sessionStorage.getItem('student')) {
     </a>
     
     <ul class="right hide-on-med-and-down valign-wrapper">
+    <li>
+<a on:click={async() => removeSession()} rel="prefetch" class={segment === 'login' ? 'selected' : ''} href="" >
+      Log Out
+    </a>
+</li>
       <li>
         <a href="profile/{sid}">
           <img
@@ -99,7 +104,6 @@ if (sessionStorage.getItem('student')) {
             alt="user" />
         </a>
       </li>
-
       <li>
         <a
           rel="prefetch"
@@ -177,14 +181,13 @@ if (sessionStorage.getItem('student')) {
       </a>
     </li>
     <div class="divider" />
-  </ul>
-  <div class="style-sidenav center">
-    <a href="preferences">
+    <div class="style-sidenav center">
+    <a rel="prefetch" class={segment === 'preferences' ? 'selected' : ''} href="preferences">
       <i  style="margin-top: 10px;" class="material-icons">settings</i>
     </a>
-
     <a on:click={async() => removeSession()} class={segment === 'login' ? 'selected' : ''} href="login">
-      <p>Log Out</p>
+      <p style="color: white">Log Out</p>
     </a>
   </div>
+  </ul>
 </div>

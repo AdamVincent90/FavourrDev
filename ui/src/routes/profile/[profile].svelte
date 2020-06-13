@@ -11,6 +11,9 @@
         bio
         profession
         email
+        facebook
+        linkedin
+        twitter
       }
       getReviews(sid: $sid) {
         byUser
@@ -63,8 +66,8 @@
   {#await $student}
     <Loader />
   {:then result}
-    {#each result.data.studentById as { _id, firstname, lastname, bio, profession, email }}
-      <Profile {firstname} {lastname} {bio} {profession} {email} />
+    {#each result.data.studentById as { _id, firstname, lastname, bio, profession, email, twitter, facebook, linkedin }}
+      <Profile {firstname} {lastname} {bio} {profession} {email} {linkedin} {facebook} {twitter} />
     {/each}
   {/await}
 

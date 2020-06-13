@@ -45,7 +45,7 @@ onMount(async() => {
     
 })
 
-async function sendReq() {
+async function sendReq(decision) {
 
 return {
       cache: await client
@@ -54,14 +54,16 @@ return {
           variables: {
               yourEmail: sessionEmail,
               theirEmail: user,
-              status: "accepted",
+              status: decision,
               nid: parseInt(nid),
               fid: parseInt(fid)
           }
         })
         .catch(e => {
           console.log(e);
-        })
+        }).then(setTimeout(() => {
+        window.location.replace('messages');
+    }, 1000))
     };
   }
 
@@ -79,7 +81,9 @@ return {
         })
         .catch(e => {
           console.log(e);
-        })
+        }).then(setTimeout(() => {
+        window.location.replace('message');
+    }, 1000))
     };
   }
 
@@ -93,13 +97,16 @@ return {
 <p>Status: {status}</p>
 <p>Note ID: {nid} Favourr ID: {fid}</p>
 <div class="row center col l6 m6 s6">
-<a href="#{nid}" on:click={sendReq} class="modal-trigger"> <Button condition="Accept Request"/></a>
-<Button condition="Reject Request"/>
+<a href="#{nid}" on:click={async() => sendReq("accepted")} class="modal-trigger"> <Button condition="Accept Request"/></a>
+<a href="#{nid}1" on:click={async() => sendReq("rejected")} class="modal-trigger"><Button condition="Reject Request"/></a>
 <AlertBox id={nid} title="You have accepted {user}'s request! Now just wait..."/>
+<AlertBox id="{nid}1" title="You have rejected {user}'s request."/>
 </div>
 {:else if status == "accepted"}
 <p>{user} has accepted your request, confirm below!</p>
 <a href="#{user}" on:click={link} class="modal-trigger"><Button condition="Confirm"/> </a>
 <AlertBox id={user} title="You have confirmed {user}'s request, now get collaborating!"/>
+{:else if status == "rejected"}
+<p>{user} has rejected your request, but keep applying for others!</p>
 {/if}
 </div>
