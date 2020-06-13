@@ -36,33 +36,33 @@
     class="carousel-item blue lighten-2 white-text valign-wrapper"
     href="#one!">
     <div class="container">
-      <h2>First Slide</h2>
-      <p class="white-text">Etiam porta sem malesuada magna mollis euismod.</p>
+      <h2>Improve your skills</h2>
+      <p class="white-text">Work with others while improving your expertise</p>
     </div>
   </div>
   <div
     class="carousel-item blue darken-2 white-text valign-wrapper"
     href="#two!">
     <div class="container">
-      <h2>Second Slide</h2>
-      <p class="white-text">Etiam porta sem malesuada magna mollis euismod.</p>
+      <h2>Develop your soft skills</h2>
+      <p class="white-text">collaborating with other students will help you develop you as a person.</p>
     </div>
   </div>
   <div class="carousel-item blue white-text valign-wrapper" href="#three!">
     <div class="container">
-      <h2>Third Slide</h2>
-      <p class="white-text">Etiam porta sem malesuada magna mollis euismod.</p>
+      <h2>No expert competition</h2>
+      <p class="white-text">This app is catered for students, and only students.</p>
     </div>
   </div>
   <div class="carousel-item blue white-text valign-wrapper" href="#four!">
     <div class="container">
-      <h2>Fourth Slide</h2>
-      <p class="white-text">Etiam porta sem malesuada magna mollis euismod.</p>
+      <h2>Let your course profession be your unique skill</h2>
+      <p class="white-text">Create projects with other students, and use your combined expertise to create something special!</p>
     </div>
   </div>
 </div>
 
-<!-- Gitter Chat Link -->
+
 <div class="fixed-action-btn">
   <a class="btn-floating btn-large pulse" href="messages">
     <i class="large material-icons">chat</i>

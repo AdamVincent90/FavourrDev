@@ -22,7 +22,7 @@ const server = polka();
 // proxy to api
 server.use("/graphql", apiProxy);
 
-server // You can also use Express
+server
   .use(
     compression({ threshold: 0 }),
     sirv("static", { dev }),

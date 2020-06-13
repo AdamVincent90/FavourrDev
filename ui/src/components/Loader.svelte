@@ -1,7 +1,12 @@
+<style>
+.container {
+  margin-bottom: 20px;
+}
+</style>
 
-<div class="center">
-<div class="preloader-wrapper large active">
-    <div class="spinner-layer spinner-green-only">
+<div class="container center">
+<div class="preloader-wrapper active">
+    <div class="spinner-layer spinner-blue-only">
       <div class="circle-clipper left">
         <div class="circle"></div>
       </div><div class="gap-patch">

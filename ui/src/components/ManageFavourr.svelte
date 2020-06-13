@@ -82,6 +82,7 @@ await tick();
         </div>
         </div>
         <div class="card-action">
+        <a href="#{id}" class="apply modal-trigger" on:click={() => deleteFavourr()}>Delete Favourr</a>
           <i class="material-icons right activator">more_vert</i>
           </div>
       </div>

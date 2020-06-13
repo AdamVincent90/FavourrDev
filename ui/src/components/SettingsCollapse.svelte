@@ -46,11 +46,11 @@ onMount(async () => {
       {/each}
      </span>
      {:else if head == "Manage Favourrs"}
-     <span class="row">
+     <div class="row">
      {#each student.favourrByEmail as {title, description, byUser, _id, pre1, pre2, pre3, pre4}}
      <ManageFavourr title={title} description={description} user={byUser} pre1={pre1} pre2={pre2} pre3={pre3} pre4={pre4} id={_id}/>
      {/each}
-     </span>
+     </div>
      {/if}
      {/if}
      </div>
