@@ -34,5 +34,5 @@
 <div class="input-field col s12 m12 l12">
   <i class="material-icons prefix">check_circle</i>
   <input type="password" bind:value />
-  <label>{topic}</label>
+  <label class="active" for="prefix">{topic}</label>
 </div>

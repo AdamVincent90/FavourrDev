@@ -113,11 +113,8 @@
   .row {
     margin-bottom: 20px;
   }
-  .divider {
-    width: 25%;
-  }
   label {
-    font-size: 15px;
+    font-size: 18px;
     color: #212121;
   }
 
@@ -126,11 +123,9 @@
   }
 
   @media only screen and (max-width: 600px) {
-    .divider {
-      width: 50%;
-    }
     label {
-      font-size: 12px;
+      font-size: 14px;
+      padding: 10px 0 10px 0;
     }
   }
 </style>
@@ -141,20 +136,16 @@
   <Divider />
   <label>Choose a profession required</label>
   <Dropdown bind:value={catname} />
-  <div class="divider" />
   <label>Enter the title of your Favourr</label>
-  <div class="divider" />
   <Textfield topic="Enter Here.." bind:value={title} />
   <label>Enter the description of your Favourr</label>
-  <div class="divider" />
   <Textfield topic="Enter Here.." bind:value={description} />
   <label>Enter the requirements of your Favourr</label>
-  <div class="divider" />
   <Textfield topic="Enter Here.." bind:value={pre1} />
   <Textfield topic="Enter Here.." bind:value={pre2} />
   <Textfield topic="Enter Here.." bind:value={pre3} />
   <Textfield topic="Enter Here.." bind:value={pre4} />
-  <Divider />
+  <div class="divider" />
   <div class="row">
     <Label value="All good?" />
     {#if pop.displayed == false}

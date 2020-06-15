@@ -10,6 +10,7 @@
   .input-field input:focus + label {
     color: #e2be28 !important;
     font-weight: bold;
+    margin: 10px 5px 10px 5px;
   }
 
   .input-field input:focus {
@@ -34,5 +35,5 @@
 <div id={value} class="input-field col s12 m12 l12">
   <i class="material-icons prefix">check_circle</i>
   <input type="text" bind:value />
-  <label for="prefix">{topic}</label>
+  <label class="active" for="prefix">{topic}</label>
 </div>

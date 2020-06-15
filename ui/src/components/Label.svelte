@@ -6,6 +6,7 @@
   label {
     color: #212121;
     font-size: 20px;
+    margin: 10px 0 10px 0;
   }
 
   @media only screen and (max-width: 600px) {
