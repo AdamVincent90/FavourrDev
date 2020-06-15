@@ -1,13 +1,19 @@
-# Quick-start
+# Quick Installation
 
 For people who will  use the web-application for evaluation..
 
 -Download/clone the repo above
+
 -Open your code editor and access the code editors terminal/external terminal
+
 -Navigate to the API and UI directory (two terminals) and run "npm install"
--Due to updates, "npm run audit" maybe requrired to run after
+
+-Due to updates/severities, "npm run audit" maybe requrired to run after
+
 -In both API and UI directories, run "npm run dev" to run the localhost development servers
+
 -Access web-application with your browser at localhost:3000
+
 -Using your mobile device please access your router ip from where the localhost is running on port 3000 etc 191.168.1.1:3000
 
 # University Dissertation Project

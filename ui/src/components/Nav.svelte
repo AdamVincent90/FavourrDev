@@ -18,17 +18,16 @@
       inDuration: 400
     });
 
-if (sessionStorage.getItem('student')) {
-    let sessionBody = JSON.parse(sessionStorage.getItem('student'));
-    userAvatar = sessionBody.studentByEmail[0].email;
-    sid = sessionBody.studentByEmail[0]._id;
-}
-
+    if (sessionStorage.getItem("student")) {
+      let sessionBody = JSON.parse(sessionStorage.getItem("student"));
+      userAvatar = sessionBody.studentByEmail[0].email;
+      sid = sessionBody.studentByEmail[0]._id;
+    }
   });
 
-   async function removeSession() {
-   await sessionStorage.removeItem('student');
-   window.location.replace('login')
+  async function removeSession() {
+    await sessionStorage.removeItem("student");
+    window.location.replace("login");
   }
 </script>
 
@@ -49,6 +48,10 @@ if (sessionStorage.getItem('student')) {
     position: fixed;
     bottom: 0;
   }
+  .btn-floating,
+  .btn-large {
+    background-color: #e2be28;
+  }
 
   a,
   li {
@@ -60,7 +63,7 @@ if (sessionStorage.getItem('student')) {
     color: #fffcfc;
     padding-left: 50px;
     font-weight: bold;
-    font-family: 'Special Elite', cursive;
+    font-family: "Special Elite", cursive;
   }
 
   .brand-logo {
@@ -86,60 +89,66 @@ if (sessionStorage.getItem('student')) {
       Favourr
     </a>
     {#if userAvatar}
-    <a href="#!" data-target="mobile-demo" class="right sidenav-trigger">
-      <i class="material-icons" id="menu">menu</i>
-    </a>
-    
-    <ul class="right hide-on-med-and-down valign-wrapper">
-    <li>
-<a on:click={async() => removeSession()} rel="prefetch" class={segment === 'login' ? 'selected' : ''} href="" >
-      Log Out
-    </a>
-</li>
-      <li>
-        <a href="profile/{sid}">
-          <img
-            class="responsive-img"
-            src="https://api.adorable.io/avatars/40/{userAvatar}"
-            alt="user" />
-        </a>
-      </li>
-      <li>
-        <a
-          rel="prefetch"
-          class={segment === 'about' ? 'selected' : ''}
-          href="about">
-          About
-        </a>
-      </li>
-      <li>
-        <a
-          rel="prefetch"
-          class={segment === 'create' ? 'selected' : ''}
-          href="create">
-          Create Favourr
-        </a>
-      </li>
-      <li>
-        <a
-          rel="prefetch"
-          class={segment === 'preferences' ? 'selected' : ''}
-          href="preferences">
-          Preferences
-        </a>
-      </li>
-    </ul>
+      <a href="#!" data-target="mobile-demo" class="right sidenav-trigger">
+        <i class="material-icons" id="menu">menu</i>
+      </a>
+
+      <ul class="right hide-on-med-and-down valign-wrapper">
+        <li>
+          <a
+            on:click={async () => removeSession()}
+            rel="prefetch"
+            class={segment === 'login' ? 'selected' : ''}
+            href="">
+            Log Out
+          </a>
+        </li>
+        <li>
+          <a href="profile/{sid}">
+            <img
+              class="responsive-img"
+              src="https://api.adorable.io/avatars/40/{userAvatar}"
+              alt="user" />
+          </a>
+        </li>
+        <li>
+          <a
+            rel="prefetch"
+            class={segment === 'about' ? 'selected' : ''}
+            href="about">
+            About
+          </a>
+        </li>
+        <li>
+          <a
+            rel="prefetch"
+            class={segment === 'create' ? 'selected' : ''}
+            href="create">
+            Create Favourr
+          </a>
+        </li>
+        <li>
+          <a
+            rel="prefetch"
+            class={segment === 'preferences' ? 'selected' : ''}
+            href="preferences">
+            Preferences
+          </a>
+        </li>
+      </ul>
     {/if}
   </div>
 </nav>
-
 
 <div class="sidenav" id="mobile-demo">
   <ul class="center sidenav-close style-sidenav-links">
 
     <li>
       <a href="profile/{sid}">
-        <img class="responsive-img circle" src="https://api.adorable.io/avatars/40/{userAvatar}" alt="user" />
+        <img
+          class="responsive-img circle"
+          src="https://api.adorable.io/avatars/40/{userAvatar}"
+          alt="user" />
       </a>
     </li>
     <li>
@@ -182,12 +191,26 @@ if (sessionStorage.getItem('student')) {
     </li>
     <div class="divider" />
     <div class="style-sidenav center">
-    <a rel="prefetch" class={segment === 'preferences' ? 'selected' : ''} href="preferences">
-      <i  style="margin-top: 10px;" class="material-icons">settings</i>
-    </a>
-    <a on:click={async() => removeSession()} class={segment === 'login' ? 'selected' : ''} href="login">
-      <p style="color: white">Log Out</p>
-    </a>
-  </div>
+      <a
+        rel="prefetch"
+        class={segment === 'preferences' ? 'selected' : ''}
+        href="preferences">
+        <i style="margin-top: 10px;" class="material-icons">settings</i>
+      </a>
+      <a
+        on:click={async () => removeSession()}
+        class={segment === 'login' ? 'selected' : ''}
+        href="login">
+        <p style="color: white">Log Out</p>
+      </a>
+    </div>
   </ul>
 </div>
+
+{#if sid}
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large pulse" href="messages">
+      <i class="large material-icons">chat</i>
+    </a>
+  </div>
+{/if}

@@ -25,23 +25,23 @@ const GET_STUDENT_DETAILS = gql`
       pre3
       pre4
     }
-  }`;
+  }
+`;
 
-    export async function get(req, res, next) {
-  
-        let sessionEmail = req.params.setting;
-      
-        let student = await client.query({
-          query: GET_STUDENT_DETAILS,
-          variables: {
-            email: sessionEmail,
-          }
-        });
-        if (student !== null) {
-          res.setHeader("Content-Type", "application/json");
-          let json = JSON.stringify(student.data);
-          res.end(json);
-        } else {
-          next();
-        }
-      }
+export async function get(req, res, next) {
+  let sessionEmail = req.params.setting;
+
+  let student = await client.query({
+    query: GET_STUDENT_DETAILS,
+    variables: {
+      email: sessionEmail
+    }
+  });
+  if (student !== null) {
+    res.setHeader("Content-Type", "application/json");
+    let json = JSON.stringify(student.data);
+    res.end(json);
+  } else {
+    next();
+  }
+}

@@ -5,7 +5,7 @@
 
   export let passcode;
   export let email;
-  
+
   onMount(() => {
     const element = document.getElementById("modal1");
     const instance = M.Modal.init(element, {
@@ -16,9 +16,6 @@
   });
 </script>
 
-
 <div id="modal1" class="modal">
-  <div class="modal-content">
-    
-  </div>
+  <div class="modal-content" />
 </div>

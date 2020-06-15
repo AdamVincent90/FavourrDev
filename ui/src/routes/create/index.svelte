@@ -68,22 +68,26 @@
   async function preload() {
     await tick();
     return {
-      cache: await client.mutate({
-        mutation: CREATE_FAVOURR,
-        variables: {
-          catname: catname,
-          email: studentEmail,
-          UserId: studentId,
-          title: title,
-          description: description,
-          pre1: pre1,
-          pre2: pre2,
-          pre3: pre3,
-          pre4: pre4
-        }
-      }).then(setTimeout(() => {
-        window.location.replace('');
-    }, 1000))
+      cache: await client
+        .mutate({
+          mutation: CREATE_FAVOURR,
+          variables: {
+            catname: catname,
+            email: studentEmail,
+            UserId: studentId,
+            title: title,
+            description: description,
+            pre1: pre1,
+            pre2: pre2,
+            pre3: pre3,
+            pre4: pre4
+          }
+        })
+        .then(
+          setTimeout(() => {
+            window.location.replace("");
+          }, 1000)
+        )
     };
   }
 
@@ -93,12 +97,10 @@
       dismissible: true
     });
 
-    let temp = JSON.parse(sessionStorage.getItem('student'));
+    let temp = JSON.parse(sessionStorage.getItem("student"));
     studentEmail = temp.studentByEmail[0].email;
     studentId = temp.studentByEmail[0]._id;
-
   });
-
 
   let pop = { displayed: false, displayLoader: false };
 
@@ -111,37 +113,48 @@
   .row {
     margin-bottom: 20px;
   }
-  .divider {width: 25%;}
-label {font-size: 15px; color: #212121;}
+  .divider {
+    width: 25%;
+  }
+  label {
+    font-size: 15px;
+    color: #212121;
+  }
 
-.btn {background-color: #e2be28;}
+  .btn {
+    background-color: #e2be28;
+  }
 
-@media only screen and (max-width: 600px) {
-    .divider{width: 50%;}
-    label {font-size: 12px;}
-}
+  @media only screen and (max-width: 600px) {
+    .divider {
+      width: 50%;
+    }
+    label {
+      font-size: 12px;
+    }
+  }
 </style>
 
 <div in:fade={{ y: 100, duration: 800 }} out:slide>
   <h5>Create your Favourr</h5>
-     <p>Creating your Favourr is as easy as 1 2 3.. 4, and 5! Oh! And 6!</p>
-     <Divider/>
-     <label>Choose a profession required</label>
-      <Dropdown bind:value={catname}/>
-      <div class="divider"/>
-     <label>Enter the title of your Favourr</label>
-     <div class="divider"/>
-      <Textfield topic="Enter Here.." bind:value={title}/>
-      <label>Enter the description of your Favourr</label>
-      <div class="divider"/>
-      <Textfield topic="Enter Here.." bind:value={description}/>
-      <label>Enter the requirements of your Favourr</label>
-      <div class="divider"/>
-      <Textfield topic="Enter Here.." bind:value={pre1}/>
-      <Textfield topic="Enter Here.." bind:value={pre2}/>
-      <Textfield topic="Enter Here.." bind:value={pre3}/>
-      <Textfield topic="Enter Here.." bind:value={pre4}/>
-      <Divider/>
+  <p>Creating your Favourr is as easy as 1 2 3.. 4, and 5! Oh! And 6!</p>
+  <Divider />
+  <label>Choose a profession required</label>
+  <Dropdown bind:value={catname} />
+  <div class="divider" />
+  <label>Enter the title of your Favourr</label>
+  <div class="divider" />
+  <Textfield topic="Enter Here.." bind:value={title} />
+  <label>Enter the description of your Favourr</label>
+  <div class="divider" />
+  <Textfield topic="Enter Here.." bind:value={description} />
+  <label>Enter the requirements of your Favourr</label>
+  <div class="divider" />
+  <Textfield topic="Enter Here.." bind:value={pre1} />
+  <Textfield topic="Enter Here.." bind:value={pre2} />
+  <Textfield topic="Enter Here.." bind:value={pre3} />
+  <Textfield topic="Enter Here.." bind:value={pre4} />
+  <Divider />
   <div class="row">
     <Label value="All good?" />
     {#if pop.displayed == false}
@@ -172,15 +185,16 @@ label {font-size: 15px; color: #212121;}
         <p class="col l12 m12 s12">
           Are you sure you want to submit this Favourr?
         </p>
-        <button href="#create" class="btn l6 m6 s6 modal-trigger" on:click={preload}>
+        <button
+          href="#create"
+          class="btn l6 m6 s6 modal-trigger"
+          on:click={preload}>
           Yes Submit Favourr!
         </button>
-        <button class="btn l6 m6 s6" on:click={popUp}>
-          No, let me check
-        </button>
+        <button class="btn l6 m6 s6" on:click={popUp}>No, let me check</button>
       </div>
     {/if}
   </div>
 </div>
 
-<AlertBox id="create" title="Favourr Created, now wait for them go getters!"/>
+<AlertBox id="create" title="Favourr Created, now wait for them go getters!" />

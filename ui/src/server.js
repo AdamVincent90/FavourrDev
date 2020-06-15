@@ -15,7 +15,6 @@ const apiProxy = proxy(GRAPHQL_URI);
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === "development";
 
-
 // assign server variable
 const server = polka();
 
@@ -31,3 +30,7 @@ server
   .listen(PORT, err => {
     if (err) console.log("error", err);
   });
+
+// Used for deployment via vercel
+
+// export default server;

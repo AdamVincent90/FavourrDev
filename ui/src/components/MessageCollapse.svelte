@@ -11,7 +11,6 @@
   export let header;
   export let body;
   export let avatar;
- 
 
   export let message;
 
@@ -33,12 +32,14 @@
 
 <style>
   .collapsible-header {
-    background-color: #FFFCFC;
+    background-color: #fffcfc;
   }
   .collapsible-body {
-    background-color: #FFFCFC;
+    background-color: #fffcfc;
   }
-  .material-icons {color: #e2be28;}
+  .material-icons {
+    color: #e2be28;
+  }
 </style>
 
 <ul class="collapsible" data-collapsible="expandable">
@@ -52,25 +53,46 @@
         {#if name == 'Inbox'}
           {#each message.messagesToUser as { header, body, user, sender, senderName, date }}
             <span>
-              <Message {user} {header} {body} use={name} avatar={sender} name={senderName} date={date} />
+              <Message
+                {user}
+                {header}
+                {body}
+                use={name}
+                avatar={sender}
+                name={senderName}
+                {date} />
             </span>
           {/each}
         {:else if name == 'Sent Messages'}
           {#each message.messagesFromUser as { header, body, user, sender, senderName, date }}
             <span>
-              <Message {user} {header} {body} use={name} avatar={sender} name={senderName} date={date} />
+              <Message
+                {user}
+                {header}
+                {body}
+                use={name}
+                avatar={sender}
+                name={senderName}
+                {date} />
             </span>
           {/each}
-          {:else if name == 'Notifications'}
-            {#each message.favourrNotifications as {userRequested, status, _id, favourrId}}
+        {:else if name == 'Notifications'}
+          {#each message.favourrNotifications as { userRequested, status, _id, favourrId }}
             <span>
-            <Notification user={userRequested} status={status} nid={_id} fid={favourrId} />
+              <Notification
+                user={userRequested}
+                {status}
+                nid={_id}
+                fid={favourrId} />
             </span>
-            {/each}
+          {/each}
         {/if}
-      {:else} <div class="center"><Loader/></div>
+      {:else}
+        <div class="center">
+          <Loader />
+        </div>
       {/if}
     </div>
-    <Divider/>
+    <Divider />
   </li>
 </ul>

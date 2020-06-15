@@ -9,7 +9,8 @@
     "start": "node __sapper__/build",
     "cy:run": "cypress run",
     "cy:open": "cypress open",
-    "test": "run-p --race dev cy:run"
+    "test": "run-p --race dev cy:run",
+    "pretty": "prettier --write \"./**/*.{js,svelte,json}\""
   },
   "browserslist": [
     ">0.2%",
@@ -24,6 +25,7 @@
     "compression": "^1.7.1",
     "materialize-css": "^1.0.0",
     "polka": "next",
+    "pretty": "^2.0.0",
     "sirv": "^0.4.0",
     "vercel-sapper": "^0.41.0"
   },

@@ -50,7 +50,6 @@
   export let temp;
 
   onMount(async () => {
-    
     let session = JSON.parse(sessionStorage.getItem("student"));
     temp = session.studentByEmail[0];
     console.log(temp);
@@ -64,7 +63,7 @@
     let fullname = temp.firstname + " " + temp.lastname;
     let date = new Date();
     date = date.toString();
-    date = date.slice(0, 9)
+    date = date.slice(0, 9);
     date = date.split();
     date = date.reverse();
     date = date.join();
@@ -110,8 +109,8 @@
   </div>
   <div class="modal-footer">
     <div class="divider" />
-    <a  class="modal-close waves-effect waves-green btn-flat">Close</a>
+    <a class="modal-close waves-effect waves-green btn-flat">Close</a>
   </div>
 </div>
 
-<AlertBox id="sent" title="Message Sent!"/>
+<AlertBox id="sent" title="Message Sent!" />

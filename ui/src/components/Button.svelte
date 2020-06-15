@@ -6,7 +6,7 @@
   button {
     background-color: #e2be28;
     color: white;
-    font-family: 'Special Elite', cursive;
+    font-family: "Special Elite", cursive;
     margin-bottom: 10px;
   }
 

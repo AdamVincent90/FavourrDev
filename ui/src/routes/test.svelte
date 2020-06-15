@@ -7,20 +7,27 @@
 </script>
 
 <style>
+  .divider {
+    width: 25%;
+  }
+  label {
+    font-size: 15px;
+    color: #212121;
+  }
 
-.divider {width: 25%;}
-label {font-size: 15px; color: #212121;}
-
-@media only screen and (max-width: 600px) {
-    .divider{width: 50%;}
-    label {font-size: 12px;}
-}
-
+  @media only screen and (max-width: 600px) {
+    .divider {
+      width: 50%;
+    }
+    label {
+      font-size: 12px;
+    }
+  }
 </style>
 
 <!-- Use this page to create test pages  -->
 
-     <!-- <h5>Create your Favourr</h5>
+<!-- <h5>Create your Favourr</h5>
      <p>Creating your Favourr is as easy as 1 2 3.. 4, and 5! Oh! And 6!</p>
      <Divider/>
      <label>Enter the title of your Favourr</label>
@@ -37,4 +44,3 @@ label {font-size: 15px; color: #212121;}
       <TextField topic="Enter Here.." bind:value={pre4}/>
       <Divider/>
       <Button condition="Submit Favourr"/> -->
-

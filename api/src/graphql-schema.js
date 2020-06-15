@@ -13,6 +13,4 @@ export const typeDefs = fs
   )
   .toString("utf-8");
 
-export const resolvers = {
-  
-};
+export const resolvers = {};

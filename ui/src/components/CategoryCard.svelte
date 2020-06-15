@@ -16,7 +16,7 @@
     font-size: 100px;
     color: #b1b1b1;
   }
-  
+
   h1 {
     font-size: 15px;
     font-weight: bold;
@@ -40,7 +40,7 @@
 </style>
 
 <div class="col l4 m4 s6">
-  <a sapper-noscroll rel=prefetch href="favourrs/{categoryName}">
+  <a sapper-noscroll rel="prefetch" href="favourrs/{categoryName}">
     <div class="card hoverable z-depth-2">
       <i class="material-icons">{icon}</i>
       <h1>{categoryName}</h1>

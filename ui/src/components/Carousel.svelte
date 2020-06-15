@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
 
   onMount(async () => {
-   autoplay();
+    autoplay();
     function autoplay() {
       window.$(".carousel").carousel("next");
       setTimeout(autoplay, 4500);
@@ -23,13 +23,7 @@
       height: 200px;
     }
   }
-
-  .btn-floating,
-  .btn-large {
-    background-color: #e2be28;
-  }
 </style>
-
 
 <div class="carousel carousel-slider z-depth-0" data-indicators="true">
   <div
@@ -45,26 +39,26 @@
     href="#two!">
     <div class="container">
       <h2>Develop your soft skills</h2>
-      <p class="white-text">collaborating with other students will help you develop you as a person.</p>
+      <p class="white-text">
+        collaborating with other students will help you develop you as a person.
+      </p>
     </div>
   </div>
   <div class="carousel-item blue white-text valign-wrapper" href="#three!">
     <div class="container">
       <h2>No expert competition</h2>
-      <p class="white-text">This app is catered for students, and only students.</p>
+      <p class="white-text">
+        This app is catered for students, and only students.
+      </p>
     </div>
   </div>
   <div class="carousel-item blue white-text valign-wrapper" href="#four!">
     <div class="container">
       <h2>Let your course profession be your unique skill</h2>
-      <p class="white-text">Create projects with other students, and use your combined expertise to create something special!</p>
+      <p class="white-text">
+        Create projects with other students, and use your combined expertise to
+        create something special!
+      </p>
     </div>
   </div>
-</div>
-
-
-<div class="fixed-action-btn">
-  <a class="btn-floating btn-large pulse" href="messages">
-    <i class="large material-icons">chat</i>
-  </a>
 </div>

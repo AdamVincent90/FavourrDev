@@ -38,9 +38,8 @@ export async function get(req, res, next) {
           console.log("matched!");
           res.setHeader("Content-Type", "application/json");
           res.end(JSON.stringify(student.data));
-        } 
-        if (err) 
-        {
+        }
+        if (err) {
           throw err;
         }
       }

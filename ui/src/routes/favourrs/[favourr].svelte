@@ -1,26 +1,25 @@
 <script context="module">
   import client from "../../apollo.js";
   import { gql } from "apollo-boost";
-  
 
-let GET_FAVOURR_BY_CAT = gql`
-  query getFavourrs($catname: String!) {
-    favourrByCat(catname: $catname) {
-      _id
-      UserId
-      byUser
-      description
-      title
-      pre1
-      pre2
-      pre3
-      pre4
+  let GET_FAVOURR_BY_CAT = gql`
+    query getFavourrs($catname: String!) {
+      favourrByCat(catname: $catname) {
+        _id
+        UserId
+        byUser
+        description
+        title
+        pre1
+        pre2
+        pre3
+        pre4
+      }
     }
-  }
-`;
+  `;
 
-export async function preload({params}) {
-   let category = params.favourr;
+  export async function preload({ params }) {
+    let category = params.favourr;
     return {
       cache: await client.query({
         query: GET_FAVOURR_BY_CAT,
@@ -30,7 +29,6 @@ export async function preload({params}) {
       })
     };
   }
-
 </script>
 
 <script>
@@ -43,7 +41,7 @@ export async function preload({params}) {
   import { stores } from "@sapper/app";
   import { setClient, restore, query } from "svelte-apollo";
 
-  const {page} = stores();
+  const { page } = stores();
   const cat = $page.params;
 
   export let cache;
@@ -53,17 +51,13 @@ export async function preload({params}) {
   restore(client, GET_FAVOURR_BY_CAT, cache.data);
   setClient(client);
 
-  
-
   const favourrs = query(client, { query: GET_FAVOURR_BY_CAT });
-  
+
   onMount(async () => {
     category = cat.favourr;
-    let temp = JSON.parse(sessionStorage.getItem('student'));
+    let temp = JSON.parse(sessionStorage.getItem("student"));
     studentId = temp.studentByEmail[0]._id;
-  })
-
- 
+  });
 </script>
 
 <style>
@@ -79,15 +73,23 @@ export async function preload({params}) {
   <Divider />
   <div class="row pageLayout">
     {#await $favourrs}
-    <Loader/>
+      <Loader />
     {:then result}
       {#each result.data.favourrByCat as { title, description, pre1, pre2, pre3, pre4, byUser, _id, UserId }}
         {#if UserId !== studentId}
-      <div in:fade={{y:200, duration: 400}}>
-        <Favourr title={title} description={description} pre1={pre1} pre2={pre2} pre3={pre3} pre4={pre4} user={byUser} id={_id} />
-        </div>
+          <div in:fade={{ y: 200, duration: 400 }}>
+            <Favourr
+              {title}
+              {description}
+              {pre1}
+              {pre2}
+              {pre3}
+              {pre4}
+              user={byUser}
+              id={_id} />
+          </div>
         {/if}
       {/each}
-      {/await}
+    {/await}
   </div>
 </div>

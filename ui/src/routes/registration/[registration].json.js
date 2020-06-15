@@ -2,8 +2,6 @@ import { bcrypt } from "../../server";
 import client from "../../apollo.js";
 import { gql } from "apollo-boost";
 
-
-
 const CREATE_STUDENT = gql`
   mutation addStudent(
     $profession: String
@@ -56,7 +54,7 @@ export async function get(req, res, next) {
       next();
     }
     if (err) {
-      throw(err.message);
+      throw err.message;
     }
   });
 }

@@ -67,7 +67,15 @@
     <Loader />
   {:then result}
     {#each result.data.studentById as { _id, firstname, lastname, bio, profession, email, twitter, facebook, linkedin }}
-      <Profile {firstname} {lastname} {bio} {profession} {email} {linkedin} {facebook} {twitter} />
+      <Profile
+        {firstname}
+        {lastname}
+        {bio}
+        {profession}
+        {email}
+        {linkedin}
+        {facebook}
+        {twitter} />
     {/each}
   {/await}
 

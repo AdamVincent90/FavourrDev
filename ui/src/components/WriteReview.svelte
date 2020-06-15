@@ -47,7 +47,6 @@
   export let review;
 
   onMount(async () => {
-    
     let session = JSON.parse(sessionStorage.getItem("student"));
     temp = session.studentByEmail[0];
     console.log(temp);
@@ -74,9 +73,12 @@
         })
         .catch(e => {
           console.log(e);
-        }).then(setTimeout(() => {
-        location.reload();
-    }, 1000))
+        })
+        .then(
+          setTimeout(() => {
+            location.reload();
+          }, 1000)
+        )
     };
   }
 </script>
@@ -94,15 +96,18 @@
     <div class="center">
       <TextArea topic="Review Title" bind:value={title} />
       <TextArea topic="Review {name} here!" } bind:value={desc} />
-      <a href="#dispatched" class="modal-trigger modal-close" on:click={validate}>
+      <a
+        href="#dispatched"
+        class="modal-trigger modal-close"
+        on:click={validate}>
         <Button condition="Write Review" />
       </a>
     </div>
   </div>
   <div class="modal-footer">
     <div class="divider" />
-    <a  class="modal-close waves-effect waves-green btn-flat">Close</a>
+    <a class="modal-close waves-effect waves-green btn-flat">Close</a>
   </div>
 </div>
 
-<AlertBox id="dispatched" title="Review Added!"/>
+<AlertBox id="dispatched" title="Review Added!" />

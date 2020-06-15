@@ -58,12 +58,12 @@
   <h5>Select a Category</h5>
   <Divider />
   <div class="row">
-{#await $categories}
-loading....
-{:then result}
-    {#each result.data.Category as { name, icon }}
-      <CategoryCard categoryName={name} {icon} />
-    {/each}
-  {/await}
+    {#await $categories}
+      loading....
+    {:then result}
+      {#each result.data.Category as { name, icon }}
+        <CategoryCard categoryName={name} {icon} />
+      {/each}
+    {/await}
   </div>
 </div>

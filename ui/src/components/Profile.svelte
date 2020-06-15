@@ -1,7 +1,7 @@
 <script>
   import Divider from "../components/Divider.svelte";
   import WriteReview from "../components/WriteReview.svelte";
-  import {onMount} from "svelte";
+  import { onMount } from "svelte";
   export let bio;
   export let profession;
   export let firstname;
@@ -12,15 +12,14 @@
   export let linkedin;
   export let sessionEmail;
 
-  onMount(async() => {
-    let temp = JSON.parse(sessionStorage.getItem('student'));
+  onMount(async () => {
+    let temp = JSON.parse(sessionStorage.getItem("student"));
     sessionEmail = temp.studentByEmail[0].email;
     console.log(sessionEmail);
-  })
+  });
 </script>
 
 <style>
-  
   .socials {
     margin: 10px 5% 10px 5%;
     height: 40px;
@@ -32,14 +31,18 @@
     color: #212121;
   }
 
-  h5 {font-size: 18px; margin-top: 10px;}
+  h5 {
+    font-size: 18px;
+    margin-top: 10px;
+  }
 
   .profile-container {
     background-color: #fffcfc;
     padding: 10px 10px 10px 10px;
   }
-  .likes {margin-top: 10px;}
-  
+  .likes {
+    margin-top: 10px;
+  }
 </style>
 
 <div class="profile-container">
@@ -54,18 +57,28 @@
     </div>
   </div>
   <div class=" center">
-    <a href="https://www.{facebook}"><img class="socials" src="facebook.png" alt="facebook"/></a>
-    <a href="https://www.{linkedin}"><img class="socials" src="linkedin.png" alt="linkedin"/></a>
-    <a href="https://www.{twitter}"><img class="socials" src="twitter.png" alt="twitter"/></a>
+    <a href="https://www.{facebook}">
+      <img class="socials" src="facebook.png" alt="facebook" />
+    </a>
+    <a href="https://www.{linkedin}">
+      <img class="socials" src="linkedin.png" alt="linkedin" />
+    </a>
+    <a href="https://www.{twitter}">
+      <img class="socials" src="twitter.png" alt="twitter" />
+    </a>
   </div>
   <h5 class="center">{bio}</h5>
   <div class="divider" />
   <div class="center likes">
-  <i class="material-icons">thumb_up</i>
-  {#if sessionEmail !== email}
-  <p>Find {firstname} helpful? write a <a href="#review" class="modal-trigger">review</a>!</p>
-  {/if}
+    <i class="material-icons">thumb_up</i>
+    {#if sessionEmail !== email}
+      <p>
+        Find {firstname} helpful? write a
+        <a href="#review" class="modal-trigger">review</a>
+        !
+      </p>
+    {/if}
   </div>
 </div>
 
-<WriteReview  email={email} name={firstname} />
+<WriteReview {email} name={firstname} />
