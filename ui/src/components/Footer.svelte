@@ -62,12 +62,6 @@
             </li>
           </ul>
         </div>
-        <div class=" row col l12 s12 center">
-          <a href="contact">Contact us</a>
-        </div>
-        <div class=" row col l12 s12 center">
-          <a href="terms">Terms and Conditions</a>
-        </div>
       </div>
     </div>
     <div class="footer-copyright blue darken-1">

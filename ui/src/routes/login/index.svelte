@@ -31,7 +31,6 @@
         const studentSession = await res.json();
 
         sessionStorage.setItem("student", JSON.stringify(studentSession));
-        console.log(sessionStorage.getItem("student"));
         validateLogin = "Logging In...";
         await tick();
         window.location.replace("");

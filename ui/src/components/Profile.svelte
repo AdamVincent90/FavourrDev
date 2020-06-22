@@ -57,15 +57,21 @@
     </div>
   </div>
   <div class=" center">
-    <a href="https://www.{facebook}">
+  {#if facebook != ""}
+    <a href="{facebook}">
       <img class="socials" src="facebook.png" alt="facebook" />
     </a>
-    <a href="https://www.{linkedin}">
+    {/if}
+    {#if linkedin != ""}
+    <a href="{linkedin}">
       <img class="socials" src="linkedin.png" alt="linkedin" />
     </a>
-    <a href="https://www.{twitter}">
+    {/if}
+    {#if twitter != ""}
+    <a href="{twitter}">
       <img class="socials" src="twitter.png" alt="twitter" />
     </a>
+    {/if}
   </div>
   <h5 class="center">{bio}</h5>
   <div class="divider" />

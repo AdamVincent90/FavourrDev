@@ -65,10 +65,6 @@
   export let modalName;
 </script>
 
-<style>
-
-</style>
-
 <div in:fade={{ y: 100, duration: 800 }} out:slide>
   <div id={modalName} class="modal">
     <h5 class="center">Great Choice, Please fill the form below!</h5>
