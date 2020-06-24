@@ -14,7 +14,8 @@
 
     message = await fetch(`messages/${sessionEmail}.json`)
       .then(res => res.json())
-      .then(data => (message = data));
+      .then(data => (message = data))
+      .then(console.log(message));
   });
 </script>
 
@@ -22,9 +23,6 @@
   <h5>Message Centre</h5>
   <div class="divider" />
   <div class="center">
-    <p>
-      These students are currently collaborating with you! Send them a message!
-    </p>
     <ProfileSlider {message} />
   </div>
   <Divider />

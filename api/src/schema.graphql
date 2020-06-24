@@ -99,7 +99,7 @@ type Query {
 
 type Mutation {
   deleteFavourr(fid: Int): [Favourr]
-    @cypher(statement: "MATCH (f:Favourr) WHERE id(f) = $fid DETACH DELETE f")
+    @cypher(statement: "MATCH (f:Favourr)<-[:CREATED]-(:Student)-[WORKING_WITH]-(s:Student) WHERE id(f) = $fid DETACH DELETE f,s")
   createReview(
     yourEmail: String
     theirEmail: String

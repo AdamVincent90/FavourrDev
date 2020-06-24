@@ -104,7 +104,7 @@
           src="https://api.adorable.io/avatars/150/{user}"
           alt="user"
           class="responsive-img circle" />
-        <span class="card-title">{title}</span>
+        <h6 class="card-title">{title}</h6>
       </div>
       <div class="card-reveal">
         <p>{description}</p>

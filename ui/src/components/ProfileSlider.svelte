@@ -8,13 +8,18 @@
 </script>
 
 <style>
-
+ .pagination {
+   z-index: -1;
+ }
 </style>
 
 {#if !message}
   <Loader />
 {/if}
 {#if message}
+<p>
+      These students are currently collaborating with you! Send them a message!
+    </p>
   <ul class="pagination">
     <li class="disabled">
       <a href="#!">
@@ -26,12 +31,12 @@
         <a href="#{_id}" class="modal-trigger">
           <img
             src="https://api.adorable.io/avatars/40/{email}"
-            alt="Profile of user" />
+            alt="Profile of user"
+            class="responsive-img circle" />
         </a>
         <UserModal name={firstname} {email} sid={_id} />
       </li>
     {/each}
-
     <li class="waves-effect">
       <a href="">
         <i class="material-icons">chevron_right</i>

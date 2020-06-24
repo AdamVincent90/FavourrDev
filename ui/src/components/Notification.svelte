@@ -95,7 +95,7 @@
         })
         .then(
           setTimeout(() => {
-            window.location.replace("message");
+            window.location.replace("messages");
           }, 1000)
         )
     };
