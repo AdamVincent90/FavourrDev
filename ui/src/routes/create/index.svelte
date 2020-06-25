@@ -51,10 +51,10 @@
   export let title;
   export let description;
   export let catname;
-  export let pre1;
-  export let pre2;
-  export let pre3;
-  export let pre4;
+  export let pre1 = "";
+  export let pre2 = "";
+  export let pre3 = "";
+  export let pre4 = "";
   export let studentEmail;
   export let studentId;
   export let dataSet;
@@ -114,8 +114,10 @@
     margin-bottom: 20px;
   }
   label {
-    font-size: 18px;
+    font-size: 16px;
     color: #212121;
+    padding: 10px 10px 10px 10px;
+    font-weight: bold;
   }
 
   .btn {
@@ -140,11 +142,17 @@
   <Textfield topic="Enter Here.." bind:value={title} />
   <label>Enter the description of your Favourr</label>
   <Textfield topic="Enter Here.." bind:value={description} />
-  <label>Enter the requirements of your Favourr</label>
+  <label>Enter upto 4 requirements for your Favourr</label>
   <Textfield topic="Enter Here.." bind:value={pre1} />
-  <Textfield topic="Enter Here.." bind:value={pre2} />
-  <Textfield topic="Enter Here.." bind:value={pre3} />
-  <Textfield topic="Enter Here.." bind:value={pre4} />
+  {#if pre1}
+  <Textfield  topic="Optional Requirement" bind:value={pre2} />
+  {/if}
+  {#if pre2}
+  <Textfield topic="Optional Requirement" bind:value={pre3} />
+  {/if}
+  {#if pre3}
+  <Textfield topic="Optional Requirement" bind:value={pre4} />
+  {/if}
   <div class="divider" />
   <div class="row">
     <Label value="All good?" />

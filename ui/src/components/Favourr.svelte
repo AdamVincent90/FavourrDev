@@ -38,10 +38,9 @@
   export let pre4;
 
   onMount(async () => {
+    await tick();
     let temp = JSON.parse(sessionStorage.getItem("student"));
     sessionEmail = temp.studentByEmail[0].email;
-
-    console.log("mounted");
   });
 
   export let cache;
@@ -109,7 +108,11 @@
       <div class="card-reveal">
         <p>{description}</p>
         <p style="font-weight: bold;">This user requires to be:</p>
-        <p>{pre1}, {pre2}, {pre3}, {pre4}</p>
+
+        <p>{#if pre1}{pre1}{/if}
+           {#if pre2 !== ""},{pre2}{/if}
+           {#if pre3 !== ""},{pre3}{/if} 
+           {#if pre4 !== ""},{pre4}{/if}</p>
         <div class="divider" />
         <div class="card-action">
           <a href="#{id}" class="apply modal-trigger" on:click={sendRequest}>

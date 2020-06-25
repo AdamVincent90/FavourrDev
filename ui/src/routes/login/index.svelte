@@ -35,9 +35,10 @@
         await tick();
         window.location.replace("");
       }
-    } else {
+      else {
       validateLogin = "Invalid username or password";
     }
+    } 
   }
 </script>
 

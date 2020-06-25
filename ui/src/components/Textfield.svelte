@@ -1,4 +1,5 @@
 <script>
+  import {slide, fade} from "svelte/transition";
   export let value;
   export let label;
   export let id;
@@ -32,7 +33,7 @@
   }
 </style>
 
-<div id={value} class="input-field col s12 m12 l12">
+<div in:slide out:slide id={value} class="input-field col s12 m12 l12">
   <i class="material-icons prefix">check_circle</i>
   <input type="text" bind:value />
   <label class="active" for="prefix">{topic}</label>
