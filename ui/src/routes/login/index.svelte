@@ -28,17 +28,21 @@
       sessionStorage.removeItem("student");
       const res = await fetch(`login/${JSON.stringify(loginData)}.json`);
       if (res.status === 200) {
-        const studentSession = await res.json();
-
-        sessionStorage.setItem("student", JSON.stringify(studentSession));
         validateLogin = "Logging In...";
+        const studentSession = await res.json();
+        sessionStorage.setItem("student", JSON.stringify(studentSession));
         await tick();
         window.location.replace("");
       }
       else {
       validateLogin = "Invalid username or password";
+      await tick();
     }
     } 
+    else {
+      validateLogin = "One or more fields are empty"
+      await tick();
+    }
   }
 </script>
 
@@ -63,7 +67,7 @@
       bind:value={password} />
   </div>
   <a href="#userlogin" class="modal-trigger" on:click={validate}>
-    <Button condition="Login" />
+    <Button condition="Login" on:click={validate} />
   </a>
   <div class="modal-footer">
     <p class="center">

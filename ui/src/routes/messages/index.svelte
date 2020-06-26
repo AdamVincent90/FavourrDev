@@ -7,16 +7,18 @@
   import { onMount, beforeUpdate } from "svelte";
 
   export let message;
+  export let sessionEmail;
 
   onMount(async () => {
     let sessionData = JSON.parse(sessionStorage.getItem("student"));
-    let sessionEmail = sessionData.studentByEmail[0].email;
+    sessionEmail = sessionData.studentByEmail[0].email;
 
     message = await fetch(`messages/${sessionEmail}.json`)
       .then(res => res.json())
       .then(data => (message = data))
       .then(console.log(message));
   });
+
 </script>
 
 <div in:fade={{ y: 100, duration: 800 }} out:slide>

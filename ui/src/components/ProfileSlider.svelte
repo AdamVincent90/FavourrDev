@@ -21,11 +21,6 @@
       These students are currently collaborating with you! Send them a message!
     </p>
   <ul class="pagination">
-    <li class="disabled">
-      <a href="#!">
-        <i class="material-icons">chevron_left</i>
-      </a>
-    </li>
     {#each message.studentsLinked as { email, _id, firstname }}
       <li class="waves-effect">
         <a href="#{_id}" class="modal-trigger">
@@ -37,10 +32,5 @@
         <UserModal name={firstname} {email} sid={_id} />
       </li>
     {/each}
-    <li class="waves-effect">
-      <a href="">
-        <i class="material-icons">chevron_right</i>
-      </a>
-    </li>
   </ul>
 {/if}

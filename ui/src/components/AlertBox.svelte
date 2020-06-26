@@ -4,12 +4,13 @@
   export let id;
   export let divert;
 
-  import { onMount, beforeUpdate } from "svelte";
+  import { onMount, beforeUpdate, tick } from "svelte";
   import Loader from "../components/Loader.svelte";
 
   console.log(divert);
 
-  onMount(() => {
+  onMount(async() => {
+    await tick();
     var elems = document.querySelectorAll(".modal");
     var instances = M.Modal.init(elems);
     elems = document.querySelectorAll(".modal");

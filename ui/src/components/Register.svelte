@@ -74,9 +74,9 @@
       <Textfield topic="First Name" bind:value={fname} />
       <Textfield topic="Last Name" bind:value={lname} />
       <Textfield topic="Summary about you" bind:value={desc} />
-      <Textfield topic="UoN Email" bind:value={email} />
-      <PasswordField topic="Password" bind:value={password} />
-      <PasswordField topic="Confirm password" bind:value={match} />
+      <Textfield topic="Northampton University Email" bind:value={email} />
+      <PasswordField topic="Create Password" bind:value={password} />
+      <PasswordField topic="Confirm Your password" bind:value={match} />
     </div>
     <div class="modal-footer center">
 

@@ -97,7 +97,9 @@
             class="modal-trigger">
             <Button condition="Delete Favourr" />
           </a>
+          <span class="card-title">
           <i class="material-icons right activator">close</i>
+          </span>
         </div>
       </div>
       <div class="card-action">

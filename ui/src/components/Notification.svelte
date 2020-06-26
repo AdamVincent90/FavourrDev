@@ -9,6 +9,8 @@
       $status: String
       $nid: Int!
       $fid: Int!
+      $sessionName: String
+      $senderId: Int
     ) {
       respondNotification(
         yourEmail: $yourEmail
@@ -16,11 +18,15 @@
         status: $status
         nid: $nid
         fid: $fid
+        sessionName: $sessionName
+        senderId: $senderId
       ) {
         _id
         userRequested
         status
         favourrId
+        senderName
+        senderId
       }
     }
   `;
@@ -45,6 +51,9 @@
   export let sessionEmail;
   export let nid;
   export let fid;
+  export let senderName;
+  export let senderId;
+  export let sessionName;
 
   import Button from "../components/Button.svelte";
   import AlertBox from "../components/AlertBox.svelte";
@@ -53,6 +62,9 @@
   onMount(async () => {
     let sessionBody = JSON.parse(sessionStorage.getItem("student"));
     sessionEmail = sessionBody.studentByEmail[0].email;
+    sessionName = `${sessionBody.studentByEmail[0].firstname} ${sessionBody.studentByEmail[0].lastname}`;
+    console.log(sessionName);
+    senderId = parseInt(sessionBody.studentByEmail[0]._id);
   });
 
   async function sendReq(decision) {
@@ -62,20 +74,22 @@
           mutation: SEND_REPLY,
           variables: {
             yourEmail: sessionEmail,
+            senderId: senderId,
             theirEmail: user,
             status: decision,
             nid: parseInt(nid),
-            fid: parseInt(fid)
+            fid: parseInt(fid),
+            sessionName: sessionName,
           }
         })
         .catch(e => {
           console.log(e);
         })
-        .then(
-          setTimeout(() => {
-            window.location.replace("messages");
-          }, 1000)
-        )
+        // .then(
+        //   setTimeout(() => {
+        //     window.location.replace("messages");
+        //   }, 1000)
+        // )
     };
   }
 
@@ -103,10 +117,10 @@
 </script>
 
 <div class="collection">
-  <img src="https://api.adorable.io/avatars/40/{user}" alt="by user: {user}" />
+  <a href="profile/{senderId}"><img src="https://api.adorable.io/avatars/40/{user}" alt="by user: {user}" /></a>
   {#if status == 'pending'}
     <p>Status: {status}</p>
-    <p>Note ID: {nid} Favourr ID: {fid}</p>
+    <p>User {senderName} has applied for your Favourr! Reference - Favourr ID: {fid}</p>
     <div class="row center col l6 m6 s6">
       <a
         href="#{nid}"
@@ -126,7 +140,7 @@
       <AlertBox id="{nid}1" title="You have rejected {user}'s request." />
     </div>
   {:else if status == 'accepted'}
-    <p>{user} has accepted your request, confirm below!</p>
+    <p>{senderName} has accepted your request, confirm below!</p>
     <a href="#{user}" on:click={link} class="modal-trigger">
       <Button condition="Confirm" />
     </a>
@@ -134,6 +148,6 @@
       id={user}
       title="You have confirmed {user}'s request, now get collaborating!" />
   {:else if status == 'rejected'}
-    <p>{user} has rejected your request, but keep applying for others!</p>
+    <p>{senderName} has rejected your request, but keep applying for others!</p>
   {/if}
 </div>

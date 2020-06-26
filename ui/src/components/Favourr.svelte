@@ -8,12 +8,16 @@
       $receiver: String
       $fid: Int
       $status: String
+      $senderName: String
+      $senderId: Int
     ) {
       sendNotification(
         sender: $sender
         receiver: $receiver
         fid: $fid
         status: $status
+        senderName: $senderName
+        senderId: $senderId
       ) {
         status
         userRequested
@@ -36,23 +40,24 @@
   export let pre2;
   export let pre3;
   export let pre4;
+  export let sessionId;
+  export let sessionName;
 
   onMount(async () => {
     await tick();
     let temp = JSON.parse(sessionStorage.getItem("student"));
     sessionEmail = temp.studentByEmail[0].email;
+    sessionId = parseInt(temp.studentByEmail[0]._id);
+    sessionName = `${temp.studentByEmail[0].firstname} ${temp.studentByEmail[0].lastname}`;
   });
 
   export let cache;
 
+  
   async function sendRequest() {
     await tick();
 
     let status = "pending";
-
-    console.log(sessionEmail);
-    console.log(user);
-    console.log(id);
 
     return {
       cache: await client
@@ -62,7 +67,9 @@
             sender: sessionEmail,
             receiver: user,
             fid: parseInt(id),
-            status: status
+            status: status,
+            senderName: sessionName,
+            senderId: sessionId
           }
         })
         .catch(e => {
@@ -89,10 +96,6 @@
   .card-action {
     color: #e2be28;
   }
-
-  span {
-    padding-bottom: 10px;
-  }
 </style>
 
 <div in:slide>
@@ -108,18 +111,19 @@
       <div class="card-reveal">
         <p>{description}</p>
         <p style="font-weight: bold;">This user requires to be:</p>
-
         <p>{#if pre1}{pre1}{/if}
-           {#if pre2 !== ""},{pre2}{/if}
-           {#if pre3 !== ""},{pre3}{/if} 
-           {#if pre4 !== ""},{pre4}{/if}</p>
+           {#if pre2 !== ""}, {pre2}{/if}
+           {#if pre3 !== ""}, {pre3}{/if} 
+           {#if pre4 !== ""}, {pre4}{/if}</p>
         <div class="divider" />
-        <div class="card-action">
+        <div class="card-action center">
           <a href="#{id}" class="apply modal-trigger" on:click={sendRequest}>
             Apply
           </a>
+          <span class="card-title">
           <i class="material-icons right activator">close</i>
-        </div>
+          </span>
+          </div>
       </div>
       <div class="card-action">
         <a href="#{id}" class="apply modal-trigger" on:click={sendRequest}>

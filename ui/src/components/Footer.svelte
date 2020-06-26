@@ -6,6 +6,8 @@
   footer {
     background-color: #2196f3;
     width: 100%;
+    bottom: 0;
+    position: relative;
   }
 
   h5,

@@ -15,7 +15,8 @@
     instanceNav = M.Sidenav.init(elemNav, {
       edge: "right",
       draggable: false,
-      inDuration: 400
+      inDuration: 400,
+      scrollable: false
     });
 
     if (sessionStorage.getItem("student")) {
@@ -44,8 +45,8 @@
   .style-sidenav {
     width: 100%;
     background-color: #2196f3;
-    height: 20%;
-    position: fixed;
+    height: 25%;
+    position: absolute;
     bottom: 0;
   }
   .btn-floating,
@@ -127,6 +128,14 @@
             Create Favourr
           </a>
         </li>
+         <li>
+      <a
+        rel="prefetch"
+        class={segment === 'messages' ? 'selected' : ''}
+        href="messages">
+        Message Centre
+      </a>
+    </li>
         <li>
           <a
             rel="prefetch"
@@ -195,7 +204,7 @@
         rel="prefetch"
         class={segment === 'preferences' ? 'selected' : ''}
         href="preferences">
-        <i style="margin-top: 10px;" class="material-icons">settings</i>
+        <i style="margin-top: 20px; margin-bottom: 20px;" class="material-icons">settings</i>
       </a>
       <a
         on:click={async () => removeSession()}
@@ -208,7 +217,7 @@
 </div>
 
 {#if sid}
-  <div class="fixed-action-btn">
+  <div class="fixed-action-btn hide-on-large-only">
     <a class="btn-floating btn-large pulse" href="messages">
       <i class="large material-icons">chat</i>
     </a>

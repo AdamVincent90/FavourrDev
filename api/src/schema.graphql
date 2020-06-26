@@ -36,6 +36,8 @@ type Notification {
   userRequested: String
   status: String
   favourrId: Int
+  senderName: String
+  senderId: Int
 }
 
 type Social {
@@ -99,7 +101,7 @@ type Query {
 
 type Mutation {
   deleteFavourr(fid: Int): [Favourr]
-    @cypher(statement: "MATCH (f:Favourr)<-[:CREATED]-(:Student)-[WORKING_WITH]-(s:Student) WHERE id(f) = $fid DETACH DELETE f,s")
+    @cypher(statement: "MATCH (f:Favourr)<-[:CREATED]-(:Student)-[s:WORKING_WITH]-(:Student) WHERE id(f) = $fid DETACH DELETE f,s")
   createReview(
     yourEmail: String
     theirEmail: String
@@ -151,9 +153,11 @@ type Mutation {
     receiver: String
     fid: Int
     status: String
+    senderName: String
+    senderId: Int
   ): [Notification]
     @cypher(
-      statement: "MATCH (s1:Student{email: $sender}), (s2:Student{email: $receiver}), (f:Favourr) WHERE id(f) = $fid MERGE (s1)-[:REQUESTS]->(f)<-[:FOR]-(n:Notification{userRequested: $sender, status: $status, favourrId: $fid})<-[:GETS]-(s2) RETURN n"
+      statement: "MATCH (s1:Student{email: $sender}), (s2:Student{email: $receiver}), (f:Favourr) WHERE id(f) = $fid MERGE (s1)-[:REQUESTS]->(f)<-[:FOR]-(n:Notification{userRequested: $sender, status: $status, favourrId: $fid, senderName: $senderName, senderId: $senderId})<-[:GETS]-(s2) RETURN n"
     )
   linkStudent(yourEmail: String, theirEmail: String, nid: Int!): [Student]
     @cypher(
@@ -165,9 +169,11 @@ type Mutation {
     nid: Int!
     fid: Int
     status: String
+    sessionName: String
+    senderId: Int
   ): [Notification]
     @cypher(
-      statement: "MATCH (s1:Student{email: $yourEmail}), (s2:Student{email: $theirEmail}), (f:Favourr), (n:Notification) WHERE id(n) = $nid AND id(f) = $fid MERGE (s2)-[:GETS]->(n1:Notification{userRequested: $yourEmail, status: $status})-[:FOR]->(f)<-[:REQUESTS]-(s1) DETACH DELETE n RETURN n1"
+      statement: "MATCH (s1:Student{email: $yourEmail}), (s2:Student{email: $theirEmail}), (f:Favourr), (n:Notification) WHERE id(n) = $nid AND id(f) = $fid MERGE (s2)-[:GETS]->(n1:Notification{userRequested: $yourEmail, senderName: $sessionName, senderId: senderId, status: $status})-[:FOR]->(f)<-[:REQUESTS]-(s1) DETACH DELETE n RETURN n1"
     )
   reviewStudent(
     yourEmail: String

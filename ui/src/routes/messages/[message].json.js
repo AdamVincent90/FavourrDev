@@ -24,6 +24,8 @@ const GET_MESSAGES_BY_USER = gql`
       status
       favourrId
       _id
+      senderName
+      senderId
     }
     studentsLinked(email: $email) {
       firstname

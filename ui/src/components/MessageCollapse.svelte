@@ -77,13 +77,16 @@
             </span>
           {/each}
         {:else if name == 'Notifications'}
-          {#each message.favourrNotifications as { userRequested, status, _id, favourrId }}
+          {#each message.favourrNotifications as { userRequested, status, _id, favourrId, senderName, senderId }}
             <span>
               <Notification
                 user={userRequested}
                 {status}
                 nid={_id}
-                fid={favourrId} />
+                fid={favourrId}
+                senderName={senderName}
+                senderId={senderId}
+                />
             </span>
           {/each}
         {/if}
