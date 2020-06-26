@@ -28,8 +28,6 @@ export async function get(req, res, next) {
 
     delete student.data.studentByEmail[0].password;
 
-    console.log(hashcode);
-
     bcrypt.compare(
       studentData.password,
       hashcode, //this may return undefined

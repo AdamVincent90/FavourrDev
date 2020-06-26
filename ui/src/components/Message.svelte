@@ -49,7 +49,7 @@
       <i class="material-icons read">chevron_right</i>
       <p class="right">By {name}</p>
     </div>
-    <div class="collapsible-body">
+    <div class="collapsible-body hoverable">
       <span>
         <ul class="collection">
           <li class="collection-item">
@@ -58,7 +58,7 @@
               alt="from user" />
             {#if use == 'Inbox'}
               <a class="modal-trigger" href="#{avatar}1">
-                <i class="material-icons secondary-content">reply</i>
+                <i class="material-icons secondary-content hoverable">reply</i>
               </a>
               <ComposeMessage email={avatar} {name} />
             {/if}

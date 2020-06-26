@@ -4,6 +4,7 @@
   import Loader from "../components/Loader.svelte";
   import Notification from "../components/Notification.svelte";
   import { onMount } from "svelte";
+  import { slide } from "svelte/transition";
 
   export let name;
 
@@ -42,7 +43,7 @@
   }
 </style>
 
-<ul class="collapsible" data-collapsible="expandable">
+<ul class="collapsible hoverable" data-collapsible="expandable">
   <li class="z-depth-0">
     <div class="collapsible-header">
       <i class="material-icons">chevron_right</i>
@@ -52,7 +53,7 @@
       {#if message}
         {#if name == 'Inbox'}
           {#each message.messagesToUser as { header, body, user, sender, senderName, date }}
-            <span>
+            <span in:slide>
               <Message
                 {user}
                 {header}
@@ -65,7 +66,7 @@
           {/each}
         {:else if name == 'Sent Messages'}
           {#each message.messagesFromUser as { header, body, user, sender, senderName, date }}
-            <span>
+            <div in:slide>
               <Message
                 {user}
                 {header}
@@ -74,7 +75,7 @@
                 avatar={sender}
                 name={senderName}
                 {date} />
-            </span>
+            </div>
           {/each}
         {:else if name == 'Notifications'}
           {#each message.favourrNotifications as { userRequested, status, _id, favourrId, senderName, senderId }}

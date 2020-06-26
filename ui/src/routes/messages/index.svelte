@@ -4,7 +4,7 @@
   import ProfileSlider from "../../components/ProfileSlider.svelte";
 
   import { slide, fade } from "svelte/transition";
-  import { onMount, beforeUpdate } from "svelte";
+  import { onMount, afterUpdate } from "svelte";
 
   export let message;
   export let sessionEmail;
@@ -15,9 +15,9 @@
 
     message = await fetch(`messages/${sessionEmail}.json`)
       .then(res => res.json())
-      .then(data => (message = data))
-      .then(console.log(message));
+      .then(data => (message = data));
   });
+
 
 </script>
 

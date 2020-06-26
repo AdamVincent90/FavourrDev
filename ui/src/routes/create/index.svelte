@@ -153,9 +153,8 @@
   {#if pre3}
   <Textfield topic="Optional Requirement" bind:value={pre4} />
   {/if}
-  <div class="divider" />
+  <div class="divider" style="margin-bottom: 20px" />
   <div class="row">
-    <Label value="All good?" />
     {#if pop.displayed == false}
       <div in:fade={{ y: 40, duration: 400 }} out:slide>
         <a on:click={popUp}>

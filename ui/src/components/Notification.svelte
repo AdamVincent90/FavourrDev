@@ -63,7 +63,6 @@
     let sessionBody = JSON.parse(sessionStorage.getItem("student"));
     sessionEmail = sessionBody.studentByEmail[0].email;
     sessionName = `${sessionBody.studentByEmail[0].firstname} ${sessionBody.studentByEmail[0].lastname}`;
-    console.log(sessionName);
     senderId = parseInt(sessionBody.studentByEmail[0]._id);
   });
 
@@ -85,11 +84,11 @@
         .catch(e => {
           console.log(e);
         })
-        // .then(
-        //   setTimeout(() => {
-        //     window.location.replace("messages");
-        //   }, 1000)
-        // )
+        .then(
+          setTimeout(() => {
+            window.location.replace("messages");
+          }, 1000)
+        )
     };
   }
 

@@ -5,7 +5,7 @@
     autoplay();
     function autoplay() {
       window.$(".carousel").carousel("next");
-      setTimeout(autoplay, 4500);
+      setTimeout(autoplay, 6000);
     }
   });
 </script>

@@ -82,7 +82,6 @@
 
       {#if (catname, fname, lname, desc, email, password, match)}
         <div in:fade={{ y: 100, duration: 300 }}>
-          <h6 class="center">All good?</h6>
           <a href="#registered" on:click={validate} class="modal-trigger">
             <Button condition="Register" />
           </a>
