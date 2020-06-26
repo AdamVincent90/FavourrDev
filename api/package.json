@@ -23,8 +23,7 @@
     "graphql-tag": "^2.10.1",
     "neo4j-driver": "^1.7.5",
     "neo4j-graphql-js": "^2.10.2",
-    "node-fetch": "^2.6.0",
-    "vercel": "^19.1.0"
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.3",
