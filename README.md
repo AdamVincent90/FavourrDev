@@ -14,7 +14,7 @@ For people who will  use the web-application for evaluation..
 
 -Access web-application with your browser at localhost:3000
 
--Using your mobile device please access your router ip from where the localhost is running on port 3000 etc 191.168.1.1:3000
+-Using your mobile device please access your public ip from where the localhost is running from, using port 3000. etc 191.168.11.1:3000
 
 # University Dissertation Project
 
