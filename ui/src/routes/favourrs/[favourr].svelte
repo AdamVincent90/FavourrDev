@@ -66,6 +66,10 @@
     width: 100%;
     text-shadow: 0 1px 1px #212121;
   }
+
+  @media only screen and (max-width: 600px) {
+    h5 { font-size: 16px; }
+  }
 </style>
 
 <div in:fade={{ y: 100, duration: 800 }} out:slide>
@@ -77,7 +81,7 @@
     {:then result}
       {#each result.data.favourrByCat as { title, description, pre1, pre2, pre3, pre4, byUser, _id, UserId }}
         {#if UserId !== studentId}
-          <div in:fade={{ y: 200, duration: 400 }}>
+          <div in:slide>
             <Favourr
               {title}
               {description}

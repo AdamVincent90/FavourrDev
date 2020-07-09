@@ -24,18 +24,16 @@
   import CategoryCard from "../components/CategoryCard.svelte";
   import Favourr from "../components/Favourr.svelte";
   import Divider from "../components/Divider.svelte";
+  import Loader from "../components/Loader.svelte";
   import { fade, fly, slide } from "svelte/transition";
   import { setClient, restore, query } from "svelte-apollo";
 
   export let cache;
 
-  console.log(cache);
-
   restore(client, GET_CATEGORY, cache.data);
   setClient(client);
 
   const categories = query(client, { query: GET_CATEGORY });
-  console.log(categories);
 </script>
 
 <style>
@@ -59,7 +57,7 @@
   <Divider />
   <div class="row">
     {#await $categories}
-      loading....
+      <Loader/>
     {:then result}
       {#each result.data.Category as { name, icon }}
         <CategoryCard categoryName={name} {icon} />

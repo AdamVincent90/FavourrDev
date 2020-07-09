@@ -7,7 +7,6 @@
   import { onMount, beforeUpdate, tick } from "svelte";
   import Loader from "../components/Loader.svelte";
 
-  console.log(divert);
 
   onMount(async() => {
     await tick();

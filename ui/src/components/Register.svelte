@@ -41,7 +41,7 @@
         "You have registered, now please login and get going!";
       setTimeout(function() {
         window.location.replace("login");
-      }, 3000);
+      }, 2000);
     }
   }
 
