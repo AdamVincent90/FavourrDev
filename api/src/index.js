@@ -36,12 +36,6 @@ const driver = neo4j.driver(
   )
 );
 
-/*
- * Create a new ApolloServer instance, serving the GraphQL schema
- * created using makeAugmentedSchema above and injecting the Neo4j driver
- * instance into the context object so it is available in the
- * generated resolvers to connect to the database.
- */
 const server = new ApolloServer({
   context: { driver },
   schema: schema,
@@ -53,10 +47,6 @@ const server = new ApolloServer({
 const port = process.env.GRAPHQL_LISTEN_PORT || 4001;
 const path = "/graphql";
 
-/*
- * Optionally, apply Express middleware for authentication, etc
- * This also also allows us to specify a path for the GraphQL endpoint
- */
 server.applyMiddleware({ app, path });
 
 app.listen({ port, path }, () => {

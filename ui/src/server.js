@@ -15,10 +15,8 @@ const apiProxy = proxy(GRAPHQL_URI);
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === "development";
 
-// assign server variable
 const server = polka();
 
-// proxy to api
 server.use("/graphql", apiProxy);
 
 server
@@ -32,5 +30,4 @@ server
   });
 
 // Used for deployment via vercel
-
 // export default server;
