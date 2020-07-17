@@ -1,20 +1,28 @@
 # Quick Installation
 
-For people who will  use the web-application for evaluation..
+Note: To use this application, Node.js must be installed, Node can be installed at: https://nodejs.org/en/
 
--Download/clone the repo above
+How to install Node.js on mac: https://www.webucator.com/how-to/how-install-nodejs-on-mac.cfm
 
--Open your code editor and access the code editors terminal/external terminal
+How to install Node.js on windows: https://treehouse.github.io/installation-guides/windows/node-windows.html
 
--Navigate to the API and UI directory (two terminals) and run "npm install"
 
--Due to updates/severities, "npm run audit" maybe requrired to run after
 
--In both API and UI directories, run "npm run dev" to run the localhost development servers
+For user who will use the web-application for evaluation or leisure..
 
--Access web-application with your browser at localhost:3000
+1 Download/clone the repo above
 
--Using your mobile device please access your local IPV4 address from where the localhost is running from, using port 3000. etc 191.168.11.1:3000
+2 Open your code editor and access the code editors terminal/external terminal
+
+3 Navigate to the API and UI directory (two terminals) and run "npm install"
+
+4 Due to updates/severities, "npm run audit" maybe requrired to run after
+
+5 In both API and UI directories, run "npm run dev" to run the localhost development servers
+
+6a Access web-application with your browser at localhost:3000
+
+6b Using your mobile device please access your local IPV4 address from where the localhost is running from, using port 3000. etc 191.168.11.1:3000
 
 # University Dissertation Project
 
