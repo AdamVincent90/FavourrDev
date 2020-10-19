@@ -41,6 +41,31 @@ Also, please check out:
 https://svelte.dev/ to learn more about svelte, a modern, component based approach to front-end web development
 https://neo4j.com/docs/ to learn more about neo4j, a leading graph-based database
 
+# Example Application Snapshots
+
+Login Page that requires an existing or new user to login or register:
+
+![Login Page](https://user-images.githubusercontent.com/37915853/96466161-b122ca00-1221-11eb-828b-3149037b0302.png)
+
+Registration form for new users:
+
+![Registration](https://user-images.githubusercontent.com/37915853/96466550-d1528900-1221-11eb-9a15-42cbbff15bba.png)
+
+Initial landing page upon session:
+
+![Landing Page](https://user-images.githubusercontent.com/37915853/96466831-2a222180-1222-11eb-9897-901750482305.png)
+
+Messaging services that contains, inbox, outbox, and notifications:
+
+![Message Centre](https://user-images.githubusercontent.com/37915853/96467138-87b66e00-1222-11eb-9541-4ab5f0e59b87.png)
+
+About page to understand the purpose of the web application:
+
+![About](https://user-images.githubusercontent.com/37915853/96467276-a7e62d00-1222-11eb-9e72-2b2a8afa8e4a.png)
+
+Create a Favourr in order to collaborate with many different students:
+
+![Favourr Creation](https://user-images.githubusercontent.com/37915853/96467458-d8c66200-1222-11eb-86e2-1cbffc3ac8aa.png)
 
 # SANDstack Starter
 
