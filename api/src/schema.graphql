@@ -1,0 +1,205 @@
+type Category {
+  id: ID!
+  name: String
+  icon: String
+}
+
+type Favourr {
+  id: ID!
+  title: String
+  UserId: String
+  description: String
+  byUser: String
+  pre1: String
+  pre2: String
+  pre3: String
+  pre4: String
+}
+
+type Student {
+  id: ID!
+  img: String
+  firstname: String
+  lastname: String
+  email: String
+  password: String
+  profession: String
+  bio: String
+  likes: Int!
+  facebook: String
+  twitter: String
+  linkedin: String
+}
+
+type Notification {
+  id: ID!
+  userRequested: String
+  status: String
+  favourrId: Int
+  senderName: String
+  senderId: Int
+}
+
+type Social {
+  id: ID!
+  twitter: String
+  linkedin: String
+  facebook: String
+}
+
+type Message {
+  id: ID!
+  header: String
+  body: String
+  date: String
+  read: Boolean
+  sender: String
+  senderName: String
+  receiver: String
+}
+
+type Review {
+  id: ID!
+  title: String
+  description: String
+  byUser: String
+  name: String
+}
+
+type Query {
+  favourrByCat(catname: String): [Favourr]
+    @cypher(
+      statement: "MATCH (f:Favourr)<-[:CONTAINS]-(:Category {name: $catname}) RETURN f"
+    )
+  favourrByEmail(email: String): [Favourr]
+    @cypher(statement: "MATCH (f:Favourr) WHERE f.byUser = $email RETURN f")
+  messagesToUser(email: String!): [Message]
+    @cypher(
+      statement: "MATCH (s:Student{email: $email})-[:RECEIVES]->(m:Message) RETURN m"
+    )
+  messagesFromUser(email: String!): [Message]
+    @cypher(
+      statement: "MATCH (s:Student)-[:SENDS]->(m:Message) WHERE s.email = $email RETURN m"
+    )
+  favourrNotifications(email: String): [Notification]
+    @cypher(
+      statement: "MATCH (s:Student{email: $email})-[:GETS]->(n:Notification)-[:FOR]->(f:Favourr) RETURN n"
+    )
+  studentByEmail(email: String): [Student]
+    @cypher(statement: "MATCH (s:Student{email: $email}) RETURN s LIMIT 1")
+  studentsLinked(email: String): [Student]
+    @cypher(
+      statement: "MATCH (s1{email: $email})-[:WORKING_WITH]-(s2:Student) RETURN s2"
+    )
+  studentById(sid: Int!): [Student]
+    @cypher(statement: "MATCH (s:Student) WHERE id(s) = $sid RETURN s")
+  getReviews(sid: Int!): [Review]
+    @cypher(
+      statement: "MATCH (s:Student)-[:GETS]->(r:Review) WHERE id(s) = $sid RETURN r"
+    )
+}
+
+type Mutation {
+  deleteFavourr(fid: Int): [Favourr]
+    @cypher(statement: "MATCH (f:Favourr)<-[:CREATED]-(:Student)-[s:WORKING_WITH]-(:Student) WHERE id(f) = $fid DETACH DELETE f,s")
+  createReview(
+    yourEmail: String
+    theirEmail: String
+    title: String
+    message: String
+  ): [Review]
+    @cypher(
+      statement: "MATCH (s1:Student{email: $yourEmail}), (s2:Student{email: $theirEmail}) MERGE (s1)-[:WRITES]->(r:Review{title: $title, message: $message, byUser: $yourEmail})<-[:GETS]-(s2) RETURN r"
+    )
+  createFavourr(
+    catname: String
+    email: String
+    UserId: String
+    title: String
+    description: String
+    pre1: String
+    pre2: String
+    pre3: String
+    pre4: String
+  ): [Favourr]
+    @cypher(
+      statement: "MATCH (c:Category{name: $catname}), (s:Student{email: $email}) MERGE (c)-[:CONTAINS]->(f:Favourr{title: $title, UserId: $UserId, description: $description, pre1: $pre1, pre2: $pre2, pre3: $pre3, pre4: $pre4, byUser: $email})<-[:CREATED]-(s) RETURN f"
+    )
+  createStudent(
+    profession: String
+    firstname: String
+    lastname: String
+    email: String
+    bio: String
+    password: String
+    default: String
+  ): [Student]
+    @cypher(
+      statement: "MATCH (c:Category{name: $profession}) MERGE (c)<-[:SKILLED_IN]-(s:Student{firstname: $firstname, lastname: $lastname, email: $email, bio: $bio, password: $password, profession: $profession, twitter: $default, linkedin: $default, facebook: $default}) RETURN s"
+    )
+  sendMessage(
+    emailSend: String
+    emailReceive: String
+    header: String
+    date: String
+    body: String
+    senderName: String
+  ): [Message]
+    @cypher(
+      statement: "MATCH (s1:Student{email: $emailSend}), (s2:Student{email: emailReceive}) MERGE (s1)-[:SENDS]->(m:Message {header: $header, body: $body, date: $date, read: FALSE, sender: $emailSend, receiver: $emailReceive, senderName: $senderName})<-[:RECEIVES]-(s2) RETURN m"
+    )
+  sendNotification(
+    sender: String
+    receiver: String
+    fid: Int
+    status: String
+    senderName: String
+    senderId: Int
+  ): [Notification]
+    @cypher(
+      statement: "MATCH (s1:Student{email: $sender}), (s2:Student{email: $receiver}), (f:Favourr) WHERE id(f) = $fid MERGE (s1)-[:REQUESTS]->(f)<-[:FOR]-(n:Notification{userRequested: $sender, status: $status, favourrId: $fid, senderName: $senderName, senderId: $senderId})<-[:GETS]-(s2) RETURN n"
+    )
+  linkStudent(yourEmail: String, theirEmail: String, nid: Int!): [Student]
+    @cypher(
+      statement: "MATCH (s1:Student{email: $yourEmail}), (s2:Student{email: $theirEmail}), (n:Notification) WHERE id(n) = $nid MERGE (s1)-[:WORKING_WITH]->(s2) DETACH DELETE n RETURN s2"
+    )
+  respondNotification(
+    yourEmail: String
+    theirEmail: String
+    nid: Int!
+    fid: Int
+    status: String
+    sessionName: String
+    senderId: Int
+  ): [Notification]
+    @cypher(
+      statement: "MATCH (s1:Student{email: $yourEmail}), (s2:Student{email: $theirEmail}), (f:Favourr), (n:Notification) WHERE id(n) = $nid AND id(f) = $fid MERGE (s2)-[:GETS]->(n1:Notification{userRequested: $yourEmail, senderName: $sessionName, senderId: senderId, status: $status})-[:FOR]->(f)<-[:REQUESTS]-(s1) DETACH DELETE n RETURN n1"
+    )
+  reviewStudent(
+    yourEmail: String
+    theirEmail: String
+    name: String
+    title: String
+    description: String
+  ): [Review]
+    @cypher(
+      statement: "MATCH (s1:Student{email: $yourEmail}), (s2:Student{email: $theirEmail}) MERGE (s1)-[:WRITES]->(r:Review{byUser: $yourEmail, name: $name, title: $title, description: $description})<-[:GETS]-(s2) RETURN r"
+    )
+  editDetails(
+    email: String
+    firstname: String
+    lastname: String
+    bio: String
+    profession: String
+    twitter: String
+    facebook: String
+    linkedin: String
+  ): [Student]
+    @cypher(
+      statement: "MATCH (s:Student{email: $email}) SET s.firstname = $firstname, s.lastname = $lastname, s.bio = $bio, s.profession = $profession, s.facebook = $facebook, s.linkedin = $linkedin, s.twitter = $twitter RETURN s"
+    )
+  changePassword(email: String, pwd: String): [Student]
+    @cypher(
+      statement: "MATCH (s:student{email: $email}) SET s.password = $pwd RETURN s"
+    )
+}
