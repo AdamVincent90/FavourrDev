@@ -12,6 +12,8 @@ dotenv.config();
 const GRAPHQL_URI = process.env.GRAPHQL_URI;
 const apiProxy = proxy(GRAPHQL_URI);
 
+//FUCK YOU CUNT
+
 const { PORT, NODE_ENV } = process.env;
 const dev = NODE_ENV === "development";
 
