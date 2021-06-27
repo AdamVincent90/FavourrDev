@@ -18,8 +18,11 @@ self.addEventListener("install", event => {
   );
 });
 
+<<<<<<< HEAD
 // Ahoy there
 
+=======
+>>>>>>> 38bd1c825ad71bf9e3bd64757d80911ec722dab6
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(async keys => {

@@ -19,6 +19,7 @@
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-client": "^2.6.4",
     "apollo-link-http": "^1.5.15",
+<<<<<<< HEAD
     "apollo-server": "^2.19.2",
     "graphql-tag": "^2.10.1",
     "neo4j-driver": "^1.7.5",
@@ -27,6 +28,16 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
+=======
+    "apollo-server": "^2.8.2",
+    "graphql-tag": "^2.10.1",
+    "neo4j-driver": "^1.7.5",
+    "neo4j-graphql-js": "^2.10.2",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.3",
+>>>>>>> 38bd1c825ad71bf9e3bd64757d80911ec722dab6
     "@babel/core": "^7.6.3",
     "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
